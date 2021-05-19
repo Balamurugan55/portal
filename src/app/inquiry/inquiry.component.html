@@ -1,0 +1,36 @@
+<mat-toolbar color="accent" ><p class="align">Inquiry data</p></mat-toolbar>
+<h4 style="font-weight:bold">Sales document number</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Sales document number</mat-label>
+  <mat-select [(value)]="selected">
+    <mat-option *ngFor="let sale of salesdoc" [value]="sale.VBELN" (click)="getdetails()">
+      {{sale.VBELN}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<h4>Inquiry header items</h4>
+<!-- <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="weight">
+      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="symbol">
+      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table> -->

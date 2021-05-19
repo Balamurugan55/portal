@@ -1,18 +1,66 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { CusloginComponent } from './cuslogin/cuslogin.component';
+import { HomeComponent } from './home/home.component';
+import {MatCardModule} from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { CussignupComponent } from './cussignup/cussignup.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CusdashboardComponent } from './cusdashboard/cusdashboard.component';
+import { CussideNavComponent } from './cusside-nav/cusside-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { CusprofileComponent } from './cusprofile/cusprofile.component';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import {CusporserviceService} from './cusporservice.service';
+import{TokenInterService} from './token-inter.service';
+import { AuthGuard } from './auth.guard';
+import { InquiryComponent } from './inquiry/inquiry.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CusloginComponent,
+    HomeComponent,
+    CussignupComponent,
+    CusdashboardComponent,
+    CussideNavComponent,
+    CusprofileComponent,
+    InquiryComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatCardModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    FlexLayoutModule,
+    MatButtonModule,
+    MatToolbarModule,
+    FormsModule,
+    ReactiveFormsModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    HttpClientModule,
+    MatSelectModule,
+    MatTableModule
   ],
-  providers: [],
+  providers: [CusporserviceService,TokenInterService,AuthGuard,{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

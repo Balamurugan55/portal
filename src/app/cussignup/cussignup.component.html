@@ -1,0 +1,60 @@
+<div fxLayoutAlign="center center" fxFlexFill>
+    <mat-card fxFlex="25" class="div1">
+        <mat-toolbar color="primary">Registration page</mat-toolbar>
+        <form fxLayoutAlign="stretch" fxLayout="column" class="div2" #regform="ngForm" (ngSubmit)="onsubmit(regform)">
+            <mat-form-field>
+              <input matInput placeholder="Name" ngModel name="name" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Email" #email="ngModel" ngModel name="email" type="email" required email>
+              </mat-form-field>
+              <p *ngIf="!email.valid && email.touched" class="alert alert-warning">Enter the valid Email</p>
+                <mat-form-field>
+                <input matInput placeholder="Password" #pass="ngModel" ngModel name="password" type="password" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Confirm Password" ngModel name="confirm"type="password" required>
+              </mat-form-field>
+              <p *ngIf="!validity(regform) && pass.touched" class="alert alert-warning">Enter the valid password</p>
+              <button [disabled]="!regform.valid || !validity(regform)" mat-raised-button color="primary" type="submit" class="div3">Register</button>
+          </form>
+          
+    </mat-card>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+    <table class="mx-auto h-100">
+        <tr>
+            <td>Customer-id</td>
+            <td>
+                <input type="text" value="Bala" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td>
+                <input type="password">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit"value="Login" class="mx-auto">            
+            </td>
+        </tr>
+    </table>
+</div> -->
+

@@ -1,0 +1,85 @@
+<div fxLayoutAlign="center center" fxFlexFill>
+    <mat-card fxFlex="50" class="div1">
+        <mat-toolbar color="primary">Profile</mat-toolbar>
+        <form fxLayoutAlign="stretch" fxLayout="column" class="div2" #profile="ngForm" (ngSubmit)="onsubmit(profile)">
+            <mat-form-field>
+              <input [disabled]="!isedit1" matInput placeholder="Customer id" [(ngModel)]="cusid" name="cusid" required>
+              <button mat-icon-button matSuffix (click)="edit1()" >
+                <mat-icon>edit</mat-icon>
+              </button>
+            </mat-form-field>
+            <mat-form-field>
+                <input [disabled]="!isedit2" matInput placeholder="Name" [(ngModel)]="cusname" name="cusname" required>
+                <button mat-icon-button matSuffix (click)="edit2()" >
+                    <mat-icon>edit</mat-icon>
+                  </button>
+            </mat-form-field>
+            <mat-form-field>
+            <input [disabled]="!isedit3" matInput placeholder="Email" [(ngModel)]="cusmail" type="email" name="cusmail" required email>
+            <button mat-icon-button matSuffix (click)="edit3()" >
+                <mat-icon>edit</mat-icon>
+              </button>
+            </mat-form-field>
+            <mat-form-field>
+                <input [disabled]="!isedit4" matInput placeholder="Contact number" [(ngModel)]="contno" type="number" name="contno" required>
+                <button mat-icon-button matSuffix (click)="edit4()" >
+                    <mat-icon>edit</mat-icon>
+                  </button>
+            </mat-form-field>
+            <mat-form-field>
+              <input [disabled]="!isedit9" matInput placeholder="Street" [(ngModel)]="cusstreet"  name="cusstreet" required>
+              <button mat-icon-button matSuffix (click)="edit9()" >
+                  <mat-icon>edit</mat-icon>
+                </button>
+          </mat-form-field>
+            <mat-form-field>
+              <input [disabled]="!isedit5" matInput placeholder="City" [(ngModel)]="cuscity"  name="cuscity" required>
+              <button mat-icon-button matSuffix (click)="edit5()" >
+                  <mat-icon>edit</mat-icon>
+                </button>
+          </mat-form-field>
+          <mat-form-field>
+          <input [disabled]="!isedit8" matInput placeholder="Region" [(ngModel)]="cusregion"  name="cusregion" required>
+          <button mat-icon-button matSuffix (click)="edit8()" >
+              <mat-icon>edit</mat-icon>
+            </button>
+      </mat-form-field>
+          <mat-form-field>
+            <input [disabled]="!isedit6" matInput placeholder="Country" [(ngModel)]="cuscountry"  name="cuscountry" required>
+            <button mat-icon-button matSuffix (click)="edit6()" >
+                <mat-icon>edit</mat-icon>
+              </button>
+        </mat-form-field>
+        <mat-form-field>
+          <input [disabled]="!isedit7" matInput placeholder="Pin code" [(ngModel)]="cuscode"  name="cuscode" required>
+          <button mat-icon-button matSuffix (click)="edit7()" >
+              <mat-icon>edit</mat-icon>
+            </button>
+      </mat-form-field>
+    
+       
+    
+                
+              <button mat-raised-button color="accent" ngSubmit [disabled]="!profile.valid" class="div3">Save</button>
+          
+        </form>
+          
+    </mat-card>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
