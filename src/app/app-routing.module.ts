@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { CuscreditComponent } from './cuscredit/cuscredit.component';
 import { CusdashboardComponent } from './cusdashboard/cusdashboard.component';
+import { CusdeliveryComponent } from './cusdelivery/cusdelivery.component';
+import { CusinvoiceComponent } from './cusinvoice/cusinvoice.component';
 import { CusloginComponent } from './cuslogin/cuslogin.component';
+import { CusoverallsalesComponent } from './cusoverallsales/cusoverallsales.component';
+import { CuspayageComponent } from './cuspayage/cuspayage.component';
 import { CusprofileComponent } from './cusprofile/cusprofile.component';
+import { CussaleorderComponent } from './cussaleorder/cussaleorder.component';
 import { CussideNavComponent } from './cusside-nav/cusside-nav.component';
 import { CussignupComponent } from './cussignup/cussignup.component';
 import { HomeComponent } from './home/home.component';
@@ -37,7 +43,26 @@ const routes: Routes = [
     },{
       path:"inquiry",
       component:InquiryComponent
-    }]
+    },
+  {
+    path:"cussaleorder",
+    component:CussaleorderComponent
+  },{
+    path:"cusdelivery",
+    component:CusdeliveryComponent
+  },{
+    path:"cusinvoice",
+    component:CusinvoiceComponent
+  },{
+    path:"cuscredit",
+    component:CuscreditComponent
+  },{
+    path:"cuspayage",
+    component:CuspayageComponent
+  },{
+    path:"cusoverallsales",
+    component:CusoverallsalesComponent
+  }]
   }
 ];
 

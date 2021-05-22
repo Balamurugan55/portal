@@ -8,13 +8,13 @@
       <a mat-list-item routerLink="cusprofile"><mat-icon>person</mat-icon>Profile</a>
       <a mat-list-item (click)="display1()"><mat-icon >{{isdisplay1 ? 'expand_more' : 'chevron_right'}}</mat-icon>Dash board</a>
       <a mat-list-item *ngIf="isdisplay1" routerLink="inquiry" class="item"><mat-icon class="icon">lens</mat-icon>Inquiry data</a>
-      <a mat-list-item *ngIf="isdisplay1" routerLink="cusprofile" class="item"><mat-icon class="icon">lens</mat-icon>Sales data</a>
-      <a mat-list-item *ngIf="isdisplay1" routerLink="cusprofile" class="item"><mat-icon class="icon">lens</mat-icon>List of delivery</a>
+      <a mat-list-item *ngIf="isdisplay1" routerLink="cussaleorder" class="item"><mat-icon class="icon">lens</mat-icon>Sales data</a>
+      <a mat-list-item *ngIf="isdisplay1" routerLink="cusdelivery" class="item"><mat-icon class="icon">lens</mat-icon>List of delivery</a>
       <a mat-list-item (click)="display2()"><mat-icon >{{isdisplay2 ? 'expand_more' : 'chevron_right'}}</mat-icon>Financial sheet</a>
-      <a mat-list-item *ngIf="isdisplay2" routerLink="cusprofile" class="item"><mat-icon class="icon">lens</mat-icon>Invoice details</a>
-      <a mat-list-item *ngIf="isdisplay2" routerLink="cusprofile" class="item"><mat-icon class="icon">lens</mat-icon>Payments and aging</a>
-      <a mat-list-item *ngIf="isdisplay2" routerLink="cusprofile" class="item"><mat-icon class="icon">lens</mat-icon>Credit/Debit memo</a>
-      <a mat-list-item *ngIf="isdisplay2" routerLink="cusprofile" class="item"><mat-icon class="icon">lens</mat-icon>Overall sales data</a>
+      <a mat-list-item *ngIf="isdisplay2" routerLink="cusinvoice" class="item"><mat-icon class="icon">lens</mat-icon>Invoice details</a>
+      <a mat-list-item *ngIf="isdisplay2" routerLink="cuspayage" class="item"><mat-icon class="icon">lens</mat-icon>Payments and aging</a>
+      <a mat-list-item *ngIf="isdisplay2" routerLink="cuscredit" class="item"><mat-icon class="icon">lens</mat-icon>Credit/Debit memo</a>
+      <a mat-list-item *ngIf="isdisplay2" routerLink="cusoverallsales" class="item"><mat-icon class="icon">lens</mat-icon>Overall sales data</a>
       <a mat-list-item (click)="logout()"><mat-icon>logout</mat-icon>Log out</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -28,7 +28,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-     <p class="align">Customer portal</p>
+     <p class="align" id="abc">Customer portal</p>
     </mat-toolbar>
    <router-outlet></router-outlet>
   </mat-sidenav-content>

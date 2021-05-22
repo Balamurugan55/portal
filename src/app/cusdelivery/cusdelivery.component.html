@@ -1,0 +1,115 @@
+<mat-toolbar color="accent" ><p class="align" id="abc">Delivery data</p></mat-toolbar>
+<!-- <h4 style="font-weight:bold">Sales document number</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Sales document number</mat-label>
+  <mat-select [(value)]="selected">
+    <mat-option *ngFor="let sale of salesdoc" [value]="sale.VBELN">
+      {{sale.VBELN}}
+    </mat-option>
+  </mat-select>
+</mat-form-field> -->
+<h2 style="font-weight:bold">Delivery header items</h2>
+<mat-table [dataSource]="deliveryheader" class="mat-elevation-z8" *ngIf="isavailable">
+    <ng-container matColumnDef="VBELN">
+      <mat-header-cell *matHeaderCellDef> Sales doc </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.VBELN}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="VSTEL">
+      <mat-header-cell *matHeaderCellDef>Shipping point</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.VSTEL}} </mat-cell>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="WADAT">
+      <mat-header-cell *matHeaderCellDef> Planned GI date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.WADAT}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="INCO2">
+      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.INCO2}} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="NTGEW">
+      <mat-header-cell *matHeaderCellDef> Net weight</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.NTGEW}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="GEWEI">
+        <mat-header-cell *matHeaderCellDef> Weight unit</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.GEWEI}}</mat-cell>
+      </ng-container>
+    <ng-container matColumnDef="LFART">
+      <mat-header-cell *matHeaderCellDef> Delivery type</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.LFART}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ERDAT">
+      <mat-header-cell *matHeaderCellDef> Created date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ERDAT}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ERNAM">
+      <mat-header-cell *matHeaderCellDef> Created by</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ERNAM}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="VKORG">
+      <mat-header-cell *matHeaderCellDef> Sales Org</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.VKORG}} </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+  <h2 style="font-weight:bold">Delivery line items</h2>
+  <mat-table [dataSource]="deliveryline" class="mat-elevation-z8" *ngIf="isavailable1">
+    <ng-container matColumnDef="VBELN">
+      <mat-header-cell *matHeaderCellDef> Sales doc</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.VBELN}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="MATNR">
+      <mat-header-cell *matHeaderCellDef> Material no</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.MATNR}} </mat-cell>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="MATWA">
+      <mat-header-cell *matHeaderCellDef> Material entered</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.MATWA}} </mat-cell>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="ARKTX">
+        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.ARKTX}} </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="NTGEW">
+        <mat-header-cell *matHeaderCellDef> Net weight</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.NTGEW}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="GEWEI">
+          <mat-header-cell *matHeaderCellDef> Weight unit</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.GEWEI}}</mat-cell>
+        </ng-container>
+    <ng-container matColumnDef="MBDAT">
+      <mat-header-cell *matHeaderCellDef>Material availability date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.MBDAT}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="LGMNG">
+      <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.LGMNG}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ERDAT">
+      <mat-header-cell *matHeaderCellDef>Created date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ERDAT}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ERNAM">
+      <mat-header-cell *matHeaderCellDef> Created by</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ERNAM}} </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns1"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns1;"></mat-row>
+  </mat-table>
+  <h4 class="alert alert-info" *ngIf="!isavailable1"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>

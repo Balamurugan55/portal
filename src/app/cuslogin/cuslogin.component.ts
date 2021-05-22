@@ -40,6 +40,7 @@ export class CusloginComponent implements OnInit {
     },
     (err) => {console.log(err);
       this.signin=false;
+      setTimeout(() =>{this.signin=true;},3000)
     }
     );
     

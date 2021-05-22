@@ -26,6 +26,12 @@ import { AuthGuard } from './auth.guard';
 import { InquiryComponent } from './inquiry/inquiry.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
+import { CussaleorderComponent } from './cussaleorder/cussaleorder.component';
+import { CusdeliveryComponent } from './cusdelivery/cusdelivery.component';
+import { CusinvoiceComponent } from './cusinvoice/cusinvoice.component';
+import { CuscreditComponent } from './cuscredit/cuscredit.component';
+import { CuspayageComponent } from './cuspayage/cuspayage.component';
+import { CusoverallsalesComponent } from './cusoverallsales/cusoverallsales.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +41,13 @@ import {MatTableModule} from '@angular/material/table';
     CusdashboardComponent,
     CussideNavComponent,
     CusprofileComponent,
-    InquiryComponent
+    InquiryComponent,
+    CussaleorderComponent,
+    CusdeliveryComponent,
+    CusinvoiceComponent,
+    CuscreditComponent,
+    CuspayageComponent,
+    CusoverallsalesComponent
   ],
   imports: [
     BrowserModule,
