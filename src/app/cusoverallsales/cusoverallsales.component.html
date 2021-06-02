@@ -1,1 +1,45 @@
-<p>cusoverallsales works!</p>
+<mat-toolbar color="accent" ><p class="align" id="abc">Overall monthly sales prediction</p></mat-toolbar>
+<h2>Requirements</h2>
+<p>There is data set Which consists of sales of the many items in many shops. We have to predict the sales in the upcoming months using the data given for the sales of the previous months</p>
+
+<div class="read" ></div>
+<h2>Modification of data set</h2>
+<p>The given data set mainly consists of many NaN values,undefined values, or outliers. We have to remove all those unwanted values</p>
+<p>For this we can either remove the column if its contain very values or we can find the average and store in the places of NaN</p>
+<p>So I formatted the given to to mm-yyyy format so that I can group the day to day sales to month sales.</p>
+<p>Then sort the data by date to group it easily</p>
+<p>In next step We have to group all the data by month, shop and item. from this we can able to find the overall sales incurred in that particular month, in that particular shop, for a particular item</p>
+<p>After this we can able to use the data set effectively</p>
+<div class="modify"></div>
+<h2>Choosing an Algorithm</h2>
+<p>As time and resources permit, you should run as many algorithms of the appropriate type as you can. Comparing different runs of different algorithms can bring surprising findings about the data or the business intelligence embedded in the data. Doing so gives you more detailed insight into the business problem, and helps you identify which variables within your data have predictive power.
+
+    Some predictive analytics projects succeed best by building an ensemble model, a group of models that operate on the same data. An ensemble model uses a predefined mechanism to gather outcomes from all its component models and provide a final outcome for the user.</p>
+<p>You can use unsupervised clustering algorithms to find what relationships exist within your dataset. You can use these algorithms to find different groupings among your customers, determine what services can be grouped together, or decide for example which products can be upsold.
+
+    Regression algorithms can be used to forecast continuous data, such as predicting the trend for a stock movement given its past prices.
+    
+    Data and business objectives aren’t the only factors to consider when you’re selecting an algorithm. The expertise of your data scientists is of tremendous value at this point; picking an algorithm that will get the job done is often a tricky combination of science and art.</p>
+<p>In our case We have to choose linear regression since the data given were linearly dependent on each other. Basically linear regression finds a line of best fit for the entire dataset  for every given data it can predict the sales based on the particular input given the model</p>
+<div class="algor"></div>
+<h2>Linear regression</h2>
+<p>Linear regression is a linear model, e.g. a model that assumes a linear relationship between the input variables (x) and the single output variable (y). More specifically, that y can be calculated from a linear combination of the input variables (x).
+
+    When there is a single input variable (x), the method is referred to as simple linear regression. When there are multiple input variables, literature from statistics often refers to the method as multiple linear regression.</p>
+<p>Python offers many different modules for machine learning. One among that is Linear regression. We can just create a linear regression model and we can give it as input to the model</p>
+<p>Before doing a linear regression, we must split the given data to test and train data. For example, if you given with 100 entries of data, 80 entries for training and 20 entries for testing</p>
+<p>The reason why we spliting like this is because if train the entire data and test the same data the model will not be efficient.</p>
+<p>After training the model with given data set, We can check the score of the model by using the method score(). The score for the linear regression is low for the given overall sales prediction So, I am moving to the next method called random forest</p>
+<div class="linear"></div>
+<h2>Random forest algorithm</h2>
+<p>Random Forest is a classifier that contains a number of decision trees on various subsets of the given dataset and takes the average to improve the predictive accuracy of that dataset. Instead of relying on one decision tree, the random forest takes the prediction from each tree and based on the majority votes of predictions, and it predicts the final output.</p>
+<p>Since the random forest combines multiple trees to predict the class of the dataset, it is possible that some decision trees may predict the correct output, while others may not. But together, all the trees predict the correct output.
+It takes less training time as compared to other algorithms.
+It predicts output with high accuracy, even for the large dataset it runs efficiently.
+It can also maintain accuracy when a large proportion of data is missing.
+Same as Linear Regression We can create a model for random forest by using the given input dataset 
+using method predict we can predict the overall sales data and also we can check the accuracy using the score method
+I found that the Random forest model has more accuracy than linear regression model which around 80%.
+</p>
+
+<div class="random"></div>

@@ -1,6 +1,70 @@
 <mat-toolbar color="accent" ><p class="align" id="abc">Sales data</p></mat-toolbar>
-<h2 style="font-weight:bold">Sales orders</h2>
-<mat-table [dataSource]="salesorders" class="mat-elevation-z8" *ngIf="isavailable">
+<mat-button-toggle-group [(ngModel)]="toggle" style="margin-left:45%; font-weight:bold" (click)="dotoggle()">
+  <mat-button-toggle value="header">Header</mat-button-toggle>
+  <mat-button-toggle value="line">Line</mat-button-toggle>
+  <mat-button-toggle value="both">Both</mat-button-toggle>
+</mat-button-toggle-group>
+<h4 style="font-weight:bold">Sales document number</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Sales document number</mat-label>
+  <mat-select [(value)]="selected">
+    <mat-option *ngFor="let sale of salesorders" [value]="sale.SD_DOC" (click)="get_salesorders()">
+      {{sale.SD_DOC}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<div *ngIf="istoggle1">
+<h2 style="font-weight:bold">Sales orders header items</h2>
+<mat-table [dataSource]="item" class="mat-elevation-z8" *ngIf="isavailable">
+  
+    <ng-container matColumnDef="SD_DOC">
+      <mat-header-cell *matHeaderCellDef>SD doc</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.SD_DOC}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="NAME">
+      <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.NAME}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="DOC_DATE">
+      <mat-header-cell *matHeaderCellDef> DOC date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.DOC_DATE}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="CURRENCY">
+      <mat-header-cell *matHeaderCellDef> Currency</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.CURRENCY}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="SALES_ORG">
+      <mat-header-cell *matHeaderCellDef> Sales Org</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.SALES_ORG}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="EXCHG_RATE">
+        <mat-header-cell *matHeaderCellDef> Exchange rate</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.EXCHG_RATE}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="DIVISION">
+        <mat-header-cell *matHeaderCellDef>Division</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.DIVISION}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="PLANT">
+        <mat-header-cell *matHeaderCellDef>Plant</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.PLANT}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="STORE_LOC">
+        <mat-header-cell *matHeaderCellDef>Store location</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.STORE_LOC}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="SHIP_POINT">
+        <mat-header-cell *matHeaderCellDef> Shipping point</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.SHIP_POINT}} </mat-cell>
+      </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+  </div>
+  <div *ngIf="istoggle2">
+  <h2 style="font-weight:bold">Sales orders line items</h2>
+<mat-table [dataSource]="item" class="mat-elevation-z8" *ngIf="isavailable">
   
     <ng-container matColumnDef="SD_DOC">
       <mat-header-cell *matHeaderCellDef>SD doc</mat-header-cell>
@@ -21,33 +85,33 @@
       <mat-header-cell *matHeaderCellDef> Description</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.SHORT_TEXT}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="NAME">
-      <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.NAME}} </mat-cell>
+    <ng-container matColumnDef="DLV_QTY">
+      <mat-header-cell *matHeaderCellDef>Sales unit</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.DLV_QTY}} </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="DOC_DATE">
-      <mat-header-cell *matHeaderCellDef> DOC date</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.DOC_DATE}} </mat-cell>
+    <ng-container matColumnDef="SALES_UNIT">
+      <mat-header-cell *matHeaderCellDef>Sales unit</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.SALES_UNIT}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="NET_VAL">
       <mat-header-cell *matHeaderCellDef> Net value</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.NET_VAL}} </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="CURRENCY">
-      <mat-header-cell *matHeaderCellDef> Currency</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.CURRENCY}} </mat-cell>
+    <ng-container matColumnDef="DOC_STATUS">
+      <mat-header-cell *matHeaderCellDef> Document status</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.DOC_STATUS}} </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="SALES_ORG">
-      <mat-header-cell *matHeaderCellDef> Sales Org</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.SALES_ORG}} </mat-cell>
+    <ng-container matColumnDef="CREATION_DATE">
+      <mat-header-cell *matHeaderCellDef>Creation date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.CREATION_DATE}} </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="EXCHG_RATE">
-        <mat-header-cell *matHeaderCellDef> Exchange rate</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.EXCHG_RATE}} </mat-cell>
-      </ng-container>
-  
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <ng-container matColumnDef="CREATION_TIME">
+      <mat-header-cell *matHeaderCellDef>Creation time</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.CREATION_TIME}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns1"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns1;"></mat-row>
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+  </div>
   

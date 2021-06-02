@@ -1,0 +1,31 @@
+.align{
+    margin:auto;
+}
+#abc{
+    font-size: x-large;
+}
+.random{
+    background-image: url("E:\kaar internship\portals\customer portal\overall sales data\random1.jpg");
+    width:100%;
+    height:100%;
+}
+.linear{
+    background-image: url("E:\kaar internship\portals\customer portal\overall sales data\linear1.jpg");
+    width:100%;
+    height:100%;
+}
+.modify{
+    background-image: url("E:\kaar internship\portals\customer portal\overall sales data\modify.jpg");
+    width:100%;
+    height:100%;
+}
+.read{
+    background-image: url("E:\kaar internship\portals\customer portal\overall sales data\read.jpg");
+    width: 100%;
+    height:90%;
+}
+.algor{
+    background-image: url("E:\kaar internship\portals\customer portal\overall sales data\algor.jpg");
+    width:100%;
+    height:100%;
+}

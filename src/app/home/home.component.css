@@ -1,0 +1,35 @@
+.back{
+    background-image: url("../../assets/images/nature.jpg");
+    background-size: 100% ;  
+    background-size:cover;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;  
+    font-size: larger;
+    color: white;
+    height:100%;
+}
+h2{
+    font-size:x-large;
+}
+.nav-link{
+    color: white;
+}
+.nav-link:hover{
+    color:yellow;
+}
+.img2{
+    display: inline;
+    width: 90%;
+    height:50px;
+    margin-left: 0px;
+}
+.img1{
+    display: inline;
+    width: auto;
+    height: auto;
+    margin-left:800px;
+}
+.img3{
+    display: inline;
+    width: 60%;
+    height: 80%;
+}

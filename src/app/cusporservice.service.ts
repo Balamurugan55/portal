@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 export class CusporserviceService {
   url='http://localhost:3000/cusporauth';
   constructor(private http:HttpClient,private router:Router) { }
-  body:any={cusid:'179999'};
+  body:any={cusid:'11'};
   body1:any={cusid:'11',doctype:'0'};
   body2:any={saledoc:'10000048'};
   get_Auth(body:any)
@@ -72,6 +72,30 @@ export class CusporserviceService {
   get_cusdeli()
   {
     return this.http.post(this.url+'/cusdeli',this.body,{
+      observe:'body',
+      headers:new HttpHeaders().append('Content-Type', 'application/json')
+    });
+  }
+  savedetails(body:any){
+    return this.http.post(this.url+'/cussave',body,{
+      observe:'body',
+      headers:new HttpHeaders().append('Content-Type', 'application/json')
+    });
+  }
+  get_cuspayage(){
+    return this.http.post(this.url+'/cuspayage',this.body,{
+      observe:'body',
+      headers:new HttpHeaders().append('Content-Type', 'application/json')
+    });
+  }
+  uploadfile(fd:any){
+    return this.http.post(this.url+'/cusmasup',fd,{
+      reportProgress:true,
+      observe:'events'
+    });
+  }
+  get_cusid(body:any){
+    return this.http.post(this.url+'/cussignup',body,{
       observe:'body',
       headers:new HttpHeaders().append('Content-Type', 'application/json')
     });

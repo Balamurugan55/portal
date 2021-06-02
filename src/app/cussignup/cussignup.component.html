@@ -16,6 +16,8 @@
                 <input matInput placeholder="Confirm Password" ngModel name="confirm"type="password" required>
               </mat-form-field>
               <p *ngIf="!validity(regform) && pass.touched" class="alert alert-warning">Enter the valid password</p>
+              <p *ngIf="issuccess" class="alert alert-success">Successfully registered. Your customer id is {{cusid}}</p>
+              <p *ngIf="iserror" class="alert alert-danger">error occurred</p>
               <button [disabled]="!regform.valid || !validity(regform)" mat-raised-button color="primary" type="submit" class="div3">Register</button>
           </form>
           

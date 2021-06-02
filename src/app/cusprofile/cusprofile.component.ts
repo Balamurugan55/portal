@@ -8,7 +8,6 @@ import { CusporserviceService } from '../cusporservice.service';
   styleUrls: ['./cusprofile.component.css']
 })
 export class CusprofileComponent implements OnInit {
-  isedit1:any=false;
   isedit2:any=false;
   isedit3:any=false;
   isedit4:any=false;
@@ -27,10 +26,16 @@ export class CusprofileComponent implements OnInit {
   cuscountry:any;
   cuscode:any;
   result:any;
+  body:any;
+  issaved:any=false;
+  isnotsaved:any=false;
+  data:any;
+  obser:any;
+  obser1:any;
   constructor(private serv:CusporserviceService) { }
 
   ngOnInit(): void {
-      this.serv.get_cusprof().subscribe(res => {
+      this.obser=this.serv.get_cusprof().subscribe(res => {
         console.log(res);
         this.result=res;
         this.cusid=this.result.cusid;
@@ -40,20 +45,50 @@ export class CusprofileComponent implements OnInit {
         this.cuscountry=this.result.cuscountry;
         this.cuscode=this.result.cuspost;
         this.cusname=this.result.cusname;
-        this.cusregion=this.result.RETURN.MESSAGE_V1;
-        this.cusstreet=this.result.RETURN.MESSAGE_V2;
+        this.cusregion=this.result.RETURN.MESSAGE_V2;
+        this.cusstreet=this.result.RETURN.MESSAGE_V1;
       },
       err=>{console.log(err)}
       );
   }
+//   ngOnDestroy(){
+//     this.obser.unsubscribe();
+//     this.obser1.unsubscribe();
+// }
   onsubmit(profile:NgForm)
   {
-      //this.isedit=false;
-  }
-  edit1()
-  {
-    this.isedit1=true;
-    console.log(this.cusid);
+      console.log(this.cuscountry);
+      this.body={cusid:this.cusid,
+        cusname:this.cusname,
+        cusmail:this.cusmail,
+        contno:this.contno,
+        cusstreet:this.cusstreet,
+        cuscity:this.cuscity,
+        cusregion:this.cusregion,
+        cuscountry:this.cuscountry,
+        cuscode:this.cuscode
+      };
+      console.log(this.body);
+      this.obser1=this.serv.savedetails(this.body).subscribe(res=>{
+        this.data=res;
+        if(this.data.TYPE==='S')
+        {
+              this.issaved=true;
+              setTimeout(()=>{this.issaved=false},3000);
+        }
+        else{
+          this.isnotsaved=true;
+          setTimeout(()=>{this.isnotsaved=false},3000);
+        }
+      },err=>{console.log(err)});
+      this.isedit2=false;
+      this.isedit3=false;
+      this.isedit4=false;
+      this.isedit5=false;
+      this.isedit6=false;
+      this.isedit7=false;
+      this.isedit8=false;
+      this.isedit9=false;
   }
   edit2()
   {

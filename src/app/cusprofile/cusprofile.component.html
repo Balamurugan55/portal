@@ -1,12 +1,10 @@
 <div fxLayoutAlign="center center" fxFlexFill>
     <mat-card fxFlex="50" class="div1">
         <mat-toolbar color="primary">Profile</mat-toolbar>
-        <form fxLayoutAlign="stretch" fxLayout="column" class="div2" #profile="ngForm" (ngSubmit)="onsubmit(profile)">
+        <form fxLayoutAlign="stretch" fxLayout="column" class="div2" #profile="ngForm">
             <mat-form-field>
-              <input [disabled]="!isedit1" matInput placeholder="Customer id" [(ngModel)]="cusid" name="cusid" required>
-              <button mat-icon-button matSuffix (click)="edit1()" >
-                <mat-icon>edit</mat-icon>
-              </button>
+              <input disabled="true" matInput placeholder="Customer id" [(ngModel)]="cusid" name="cusid" required>
+  
             </mat-form-field>
             <mat-form-field>
                 <input [disabled]="!isedit2" matInput placeholder="Name" [(ngModel)]="cusname" name="cusname" required>
@@ -58,9 +56,10 @@
       </mat-form-field>
     
        
-    
+    <p *ngIf="issaved" class="alert alert-success">Saved successfully</p>
+    <p *ngIf="isnotsaved" class="alert alert-danger">Error occurred</p>
                 
-              <button mat-raised-button color="accent" ngSubmit [disabled]="!profile.valid" class="div3">Save</button>
+              <button mat-raised-button color="accent" [disabled]="!profile.valid" class="div3" (click)="onsubmit(profile)">Save</button>
           
         </form>
           

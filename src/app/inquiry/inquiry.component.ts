@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CusporserviceService } from '../cusporservice.service';
+import {SubscriptionLike} from "rxjs";
 
 @Component({
   selector: 'app-inquiry',
@@ -14,6 +15,11 @@ export class InquiryComponent implements OnInit {
   isavailable1:any=false;
   header:any=[];
   line:any=[];
+  toggle:any;
+  obser1:any;
+  obser2:any;
+  istoggle1:any=true;
+  istoggle2:any=true;
   displayedColumns:any=['OPER','REC_DATE','REC_TIME','CREATED_BY','DOC_DATE','TRAN_GROUP','DOC_TYPE','NET_VAL','CURRENCY','SALES_ORG'];
   displayedColumns1:any=['DOC_NUMBER','ITM_NUMBER','MATERIAL','MAT_ENTRD','MATL_GROUP','SHORT_TEXT','ITEM_CATEG','ORDER_PROB','CREAT_DATE','CREATED_BY'];
   constructor(private ser:CusporserviceService) { }
@@ -21,7 +27,7 @@ export class InquiryComponent implements OnInit {
   ngOnInit(): void {
     this.ser.body1.doctype='A';
     this.ser.body1.cusid=this.ser.body.cusid;
-    this.ser.get_cussale().subscribe(data =>{
+    this.obser1=this.ser.get_cussale().subscribe(data =>{
       this.salesdoc=data;
       console.log(this.salesdoc);
     },err =>{console.log(err)});
@@ -31,7 +37,7 @@ export class InquiryComponent implements OnInit {
     this.line=[];
     this.header=[];
     this.ser.body2.saledoc=this.selected;
-    this.ser.get_inqdata().subscribe(res => {
+    this.obser2=this.ser.get_inqdata().subscribe(res => {
       this.data = res;
       console.log(this.data);
       console.log(this.data.RETURN.length);
@@ -61,6 +67,20 @@ export class InquiryComponent implements OnInit {
       console.log(this.line);
       console.log(this.header);
     },err=>{console.log(err)});
+  }
+  dotoggle(){
+    if(this.toggle==='header'){
+        this.istoggle1=true;
+        this.istoggle2=false;
+    }
+    else if(this.toggle==='line'){
+      this.istoggle1=false;
+      this.istoggle2=true;
+    }
+    else{
+      this.istoggle1=true;
+      this.istoggle2=true;
+    }
   }
 
 }

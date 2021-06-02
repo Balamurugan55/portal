@@ -1,4 +1,10 @@
 <mat-toolbar color="accent" ><p class="align" id="abc">Credit and debit memo</p></mat-toolbar>
+<mat-button-toggle-group [(ngModel)]="toggle" style="margin-left:45%; font-weight:bold" (click)="dotoggle()">
+  <mat-button-toggle value="credit">Credit</mat-button-toggle>
+  <mat-button-toggle value="debit">Debit</mat-button-toggle>
+  <mat-button-toggle value="both">Both</mat-button-toggle>
+</mat-button-toggle-group>
+<div *ngIf="istoggle1">
 <h2 style="font-weight:bold">Credit memo</h2>
 <mat-table [dataSource]="credit" class="mat-elevation-z8" *ngIf="isavailable">
   
@@ -50,6 +56,8 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+</div>
+<div *ngIf="istoggle2">
   <h2 style="font-weight:bold">Debit memo</h2>
 <mat-table [dataSource]="debit" class="mat-elevation-z8" *ngIf="isavailable1">
   
@@ -101,4 +109,4 @@
     <mat-row *matRowDef="let row; columns: displayedColumns1;"></mat-row>
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable1"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
-  
+  </div>

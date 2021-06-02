@@ -1,15 +1,22 @@
 <mat-toolbar color="accent" ><p class="align" id="abc">Delivery data</p></mat-toolbar>
-<!-- <h4 style="font-weight:bold">Sales document number</h4>
+<mat-button-toggle-group [(ngModel)]="toggle" style="margin-left:45%; font-weight:bold" (click)="dotoggle()">
+  <mat-button-toggle value="header">Header</mat-button-toggle>
+  <mat-button-toggle value="line">Line</mat-button-toggle>
+  <mat-button-toggle value="both">Both</mat-button-toggle>
+</mat-button-toggle-group>
+
+<h4 style="font-weight:bold">Sales document number</h4>
 <mat-form-field appearance="fill">
   <mat-label>Sales document number</mat-label>
   <mat-select [(value)]="selected">
-    <mat-option *ngFor="let sale of salesdoc" [value]="sale.VBELN">
+    <mat-option *ngFor="let sale of deliveryline" [value]="sale.VBELN" (click)="get_deliveries()">
       {{sale.VBELN}}
     </mat-option>
   </mat-select>
-</mat-form-field> -->
+</mat-form-field>
+<div *ngIf="istoggle1">
 <h2 style="font-weight:bold">Delivery header items</h2>
-<mat-table [dataSource]="deliveryheader" class="mat-elevation-z8" *ngIf="isavailable">
+<mat-table [dataSource]="header" class="mat-elevation-z8" *ngIf="isavailable">
     <ng-container matColumnDef="VBELN">
       <mat-header-cell *matHeaderCellDef> Sales doc </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.VBELN}} </mat-cell>
@@ -60,8 +67,10 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+  </div>
+  <div *ngIf="istoggle2">
   <h2 style="font-weight:bold">Delivery line items</h2>
-  <mat-table [dataSource]="deliveryline" class="mat-elevation-z8" *ngIf="isavailable1">
+  <mat-table [dataSource]="line" class="mat-elevation-z8" *ngIf="isavailable1">
     <ng-container matColumnDef="VBELN">
       <mat-header-cell *matHeaderCellDef> Sales doc</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.VBELN}} </mat-cell>
@@ -113,3 +122,4 @@
     <mat-row *matRowDef="let row; columns: displayedColumns1;"></mat-row>
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable1"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+  </div>

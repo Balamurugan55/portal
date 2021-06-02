@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CusporserviceService } from '../cusporservice.service';
+import { TokenInterService } from '../token-inter.service';
 
 
 @Component({
@@ -14,16 +15,21 @@ export class CusloginComponent implements OnInit {
   signin:any=true;
   body:any;
   res:any;
-  constructor(private router:Router,private ser:CusporserviceService) { }
+  obser:any;
+  constructor(private router:Router,private ser:CusporserviceService,private ser1:TokenInterService) { }
 
   ngOnInit(): void {
-      
+      TokenInterService.stype='C';
+      //console.log(this.ser1.stype);
   }
+//   ngOnDestroy(){
+//     this.obser.unsubscribe();
+// }
   onsubmit(loginform:NgForm)
   {
     this.body=JSON.stringify(loginform.value);
     console.log(this.body);
-    this.ser.get_Auth(this.body).subscribe((data) => {
+    this.obser=this.ser.get_Auth(this.body).subscribe((data) => {
       this.res=data;
       console.log(this.res.tok);
       localStorage.setItem('token',this.res.tok);

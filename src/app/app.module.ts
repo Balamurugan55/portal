@@ -26,12 +26,17 @@ import { AuthGuard } from './auth.guard';
 import { InquiryComponent } from './inquiry/inquiry.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { CussaleorderComponent } from './cussaleorder/cussaleorder.component';
 import { CusdeliveryComponent } from './cusdelivery/cusdelivery.component';
 import { CusinvoiceComponent } from './cusinvoice/cusinvoice.component';
 import { CuscreditComponent } from './cuscredit/cuscredit.component';
 import { CuspayageComponent } from './cuspayage/cuspayage.component';
 import { CusoverallsalesComponent } from './cusoverallsales/cusoverallsales.component';
+import { CusmasupComponent } from './cusmasup/cusmasup.component';
+import { VenloginComponent } from './venlogin/venlogin.component';
+import { VendashboardComponent } from './vendashboard/vendashboard.component';
+import { VenprofComponent } from './venprof/venprof.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +52,11 @@ import { CusoverallsalesComponent } from './cusoverallsales/cusoverallsales.comp
     CusinvoiceComponent,
     CuscreditComponent,
     CuspayageComponent,
-    CusoverallsalesComponent
+    CusoverallsalesComponent,
+    CusmasupComponent,
+    VenloginComponent,
+    VendashboardComponent,
+    VenprofComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +75,8 @@ import { CusoverallsalesComponent } from './cusoverallsales/cusoverallsales.comp
     MatListModule,
     HttpClientModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonToggleModule
   ],
   providers: [CusporserviceService,TokenInterService,AuthGuard,{
     provide:HTTP_INTERCEPTORS,

@@ -1,0 +1,36 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false" class="div1">
+    <mat-toolbar color="primary"><p class="align">Menu</p></mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="venprof"><mat-icon>person</mat-icon>Profile</a>
+      <a mat-list-item (click)="display1()"><mat-icon >{{isdisplay1 ? 'expand_more' : 'chevron_right'}}</mat-icon>Dash board</a>
+      <a mat-list-item *ngIf="isdisplay1" routerLink="inquiry" class="item"><mat-icon class="icon">lens</mat-icon>Inquiry data</a>
+      <a mat-list-item *ngIf="isdisplay1" routerLink="cussaleorder" class="item"><mat-icon class="icon">lens</mat-icon>Sales data</a>
+      <a mat-list-item *ngIf="isdisplay1" routerLink="cusdelivery" class="item"><mat-icon class="icon">lens</mat-icon>List of delivery</a>
+      <a mat-list-item (click)="display2()"><mat-icon >{{isdisplay2 ? 'expand_more' : 'chevron_right'}}</mat-icon>Financial sheet</a>
+      <a mat-list-item *ngIf="isdisplay2" routerLink="cusinvoice" class="item"><mat-icon class="icon">lens</mat-icon>Invoice details</a>
+      <a mat-list-item *ngIf="isdisplay2" routerLink="cuspayage" class="item"><mat-icon class="icon">lens</mat-icon>Payments and aging</a>
+      <a mat-list-item *ngIf="isdisplay2" routerLink="cuscredit" class="item"><mat-icon class="icon">lens</mat-icon>Credit/Debit memo</a>
+      <a mat-list-item *ngIf="isdisplay2" routerLink="cusoverallsales" class="item"><mat-icon class="icon">lens</mat-icon>Overall sales data</a>
+      <a mat-list-item routerLink="cusmasup"><mat-icon>upload</mat-icon>Customer master data </a>
+      <a mat-list-item (click)="logout()"><mat-icon>logout</mat-icon>Log out</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+     <p class="align" id="abc">Vendor portal</p>
+    </mat-toolbar>
+   <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

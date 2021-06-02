@@ -6,6 +6,7 @@ import { CusdashboardComponent } from './cusdashboard/cusdashboard.component';
 import { CusdeliveryComponent } from './cusdelivery/cusdelivery.component';
 import { CusinvoiceComponent } from './cusinvoice/cusinvoice.component';
 import { CusloginComponent } from './cuslogin/cuslogin.component';
+import { CusmasupComponent } from './cusmasup/cusmasup.component';
 import { CusoverallsalesComponent } from './cusoverallsales/cusoverallsales.component';
 import { CuspayageComponent } from './cuspayage/cuspayage.component';
 import { CusprofileComponent } from './cusprofile/cusprofile.component';
@@ -14,6 +15,10 @@ import { CussideNavComponent } from './cusside-nav/cusside-nav.component';
 import { CussignupComponent } from './cussignup/cussignup.component';
 import { HomeComponent } from './home/home.component';
 import { InquiryComponent } from './inquiry/inquiry.component';
+import { VenauthGuard } from './venauth.guard';
+import { VendashboardComponent } from './vendashboard/vendashboard.component';
+import { VenloginComponent } from './venlogin/venlogin.component';
+import { VenprofComponent } from './venprof/venprof.component';
 
 const routes: Routes = [
   {
@@ -30,8 +35,23 @@ const routes: Routes = [
     component:CusloginComponent
   },
   {
+    path:"home/vendor",
+    component:VenloginComponent
+  },
+  {
     path:"home/customer/signup",
     component:CussignupComponent
+  },
+  {
+    path:"home/vendor/vendashboard",
+    component:VendashboardComponent,
+    canActivate:[VenauthGuard],
+    children:[
+      {
+        path:"venprof",
+        component:VenprofComponent
+      }
+    ]
   },
   {
     path:"home/customer/cusdashboard",
@@ -62,6 +82,9 @@ const routes: Routes = [
   },{
     path:"cusoverallsales",
     component:CusoverallsalesComponent
+  },{
+    path:'cusmasup',
+    component:CusmasupComponent
   }]
   }
 ];

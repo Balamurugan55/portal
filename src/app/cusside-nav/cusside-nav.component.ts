@@ -6,6 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CusporserviceService } from '../cusporservice.service';
 import { OnInit } from '@angular/core';
+import { TokenInterService } from '../token-inter.service';
 
 @Component({
   selector: 'app-cusside-nav',
@@ -23,6 +24,7 @@ export class CussideNavComponent  implements OnInit{
     events:any;
   constructor(private breakpointObserver: BreakpointObserver,private router:Router,private serv:CusporserviceService) {}
   ngOnInit(): void {
+    TokenInterService.stype='C';
     this.serv.getspecial().subscribe(
       (res)=>{ this.events = res},
       err=>{ 
@@ -46,6 +48,10 @@ export class CussideNavComponent  implements OnInit{
   }
   display2(){
     this.isdisplay2=!this.isdisplay2;
+  }
+  home(){
+    this.serv.logout();
+    this.router.navigate(['home']);
   }
 
 }

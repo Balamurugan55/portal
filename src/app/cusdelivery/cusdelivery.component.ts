@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+//import { element } from 'protractor';
 import { CusporserviceService } from '../cusporservice.service';
 
 @Component({
@@ -11,9 +12,15 @@ export class CusdeliveryComponent implements OnInit {
   isavailable1:any=false;
   deliveryheader:any=[];
   deliveryline:any=[];
+  header:Array<any>=[];
+  line:any=[];
   data:any;
-  // salesdoc:any;
-  // selected:any;
+  //salesdoc:any;
+  selected:any;
+  toggle:any;
+  istoggle1:any=true;
+  istoggle2:any=true;
+  obser:any;
   displayedColumns:any=['VBELN','VSTEL','WADAT','INCO2','NTGEW','GEWEI','LFART','ERDAT','ERNAM','VKORG'];
   displayedColumns1:any=['VBELN','MATNR','MATWA','ARKTX','NTGEW','GEWEI','MBDAT','LGMNG','ERDAT','ERNAM'];
   constructor(private ser:CusporserviceService) { }
@@ -25,7 +32,7 @@ export class CusdeliveryComponent implements OnInit {
     //   this.salesdoc=data;
     //   console.log(this.salesdoc);
     // },err =>{console.log(err)});
-    this.ser.get_cusdeli().subscribe(res=>{
+    this.obser=this.ser.get_cusdeli().subscribe(res=>{
       this.data=res;
       if(this.data.HEADER.length===0)
       {
@@ -33,7 +40,7 @@ export class CusdeliveryComponent implements OnInit {
       }
       else{
         this.deliveryheader=this.data.HEADER;
-        this.isavailable=true;
+        //this.isavailable=true;
       }
       if(this.data.LINE.length===0)
       {
@@ -41,9 +48,39 @@ export class CusdeliveryComponent implements OnInit {
       }
       else{
         this.deliveryline=this.data.LINE;
-        this.isavailable1=true;
+        //this.isavailable1=true;
       }
     },err=>{console.log(err)});
   }
+//   ngOnDestroy(){
+//     this.obser.unsubscribe();
+// }
+  get_deliveries(){
+    console.log(this.selected);
+    this.header=this.deliveryheader.filter((item:any)=>{return item.VBELN===this.selected});
+    this.line=this.deliveryline.filter((item:any)=>{return item.VBELN===this.selected});
+    if(this.header.length!=0){
+      this.isavailable=true;
+    }
+    if(this.line.length!=0){
+      this.isavailable1=true;
+    }
+    console.log(this.line);
+  }
+  dotoggle(){
+    if(this.toggle==='header'){
+        this.istoggle1=true;
+        this.istoggle2=false;
+    }
+    else if(this.toggle==='line'){
+      this.istoggle1=false;
+      this.istoggle2=true;
+    }
+    else{
+      this.istoggle1=true;
+      this.istoggle2=true;
+    }
+  }
+
 
 }

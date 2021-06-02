@@ -7,9 +7,18 @@ import { Injectable } from '@angular/core';
 export class TokenInterService implements HttpInterceptor {
 
   constructor() { }
+  static stype:any;
+  tokreq:any;
   intercept(req:any,next:any)
   {
-     let tokreq=req.clone({setHeaders: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
-     return next.handle(tokreq);
+    console.log(TokenInterService.stype);
+    if(TokenInterService.stype ==='C')
+    {
+     this.tokreq=req.clone({setHeaders: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
+    }
+    else if(TokenInterService.stype === 'V'){
+      this.tokreq=req.clone({setHeaders: {Authorization: `Bearer ${localStorage.getItem('ventoken')}`}});
+    }
+     return next.handle(this.tokreq);
   }
 }
