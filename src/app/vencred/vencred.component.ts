@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { CusporserviceService } from '../cusporservice.service';
+import { VenporserviceService } from '../venporservice.service';
 
 @Component({
-  selector: 'app-cuscredit',
-  templateUrl: './cuscredit.component.html',
-  styleUrls: ['./cuscredit.component.css']
+  selector: 'app-vencred',
+  templateUrl: './vencred.component.html',
+  styleUrls: ['./vencred.component.css']
 })
-export class CuscreditComponent implements OnInit {
+export class VencredComponent implements OnInit {
+
   isavailable:any=false;
   isavailable1:any=false;
   credit:any=[];
@@ -17,15 +18,15 @@ export class CuscreditComponent implements OnInit {
   istoggle2:any=true;
   obser:any;
   isprogress2:any=false;
-  displayedColumns:any=['COMP_CODE','ITEM_NUM','ALLOC_NMBR','FISC_YEAR','DOC_NO','DOC_DATE','LC_AMOUNT','CURRENCY','PSTNG_DATE','ENTRY_DATE'];
-  displayedColumns1:any=['COMP_CODE','ITEM_NUM','ALLOC_NMBR','FISC_YEAR','DOC_NO','DOC_DATE','LC_AMOUNT','CURRENCY','PSTNG_DATE','ENTRY_DATE'];
-  constructor(private ser:CusporserviceService) { }
+  displayedColumns:any=['COMP_CODE','ITEM_NUM','FISC_YEAR','DOC_NO','LC_AMOUNT','CURRENCY','PD_NO','MAT_NUM','QUANTITY','ORDER_UNIT'];
+  displayedColumns1:any=['COMP_CODE','ITEM_NUM','FISC_YEAR','DOC_NO','LC_AMOUNT','CURRENCY','PD_NO','MAT_NUM','QUANTITY','ORDER_UNIT'];
+  constructor(private ser:VenporserviceService) { }
 
   ngOnInit(): void {
       this.isprogress2=true;
       this.isavailable1=true;
       this.isavailable=true;
-      this.obser=this.ser.get_cuscredit().subscribe(res=>{
+      this.obser=this.ser.get_vencredit().subscribe(res=>{
         this.data=res;
         if(this.data.CREDIT.length===0)
         {
@@ -45,9 +46,9 @@ export class CuscreditComponent implements OnInit {
         }
         this.isprogress2=false;
       },err=>{console.log(err);
-        this.isprogress2=false;
-        this.isavailable=false;
-        this.isavailable1=false;
+      this.isavailable=false;
+      this.isavailable1=false;
+      this.isprogress2=false;
       });
   }
   // ngOnDestroy(){

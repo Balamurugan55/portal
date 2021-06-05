@@ -1,0 +1,118 @@
+<mat-toolbar color="accent" ><p class="align" id="abc">Credit and debit memo</p></mat-toolbar>
+<mat-button-toggle-group [(ngModel)]="toggle" style="margin-left:45%; font-weight:bold" (click)="dotoggle()">
+  <mat-button-toggle value="credit">Credit</mat-button-toggle>
+  <mat-button-toggle value="debit">Debit</mat-button-toggle>
+  <mat-button-toggle value="both">Both</mat-button-toggle>
+</mat-button-toggle-group>
+<div *ngIf="istoggle1">
+<h2 style="font-weight:bold">Credit memo</h2>
+<mat-table [dataSource]="credit" class="mat-elevation-z8" *ngIf="isavailable && !isprogress2">
+  
+    <ng-container matColumnDef="COMP_CODE">
+      <mat-header-cell *matHeaderCellDef>Company code</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.COMP_CODE}} </mat-cell>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="ITEM_NUM">
+      <mat-header-cell *matHeaderCellDef> Item no</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ITEM_NUM}} </mat-cell>
+    </ng-container>
+
+  
+    <ng-container matColumnDef="FISC_YEAR">
+      <mat-header-cell *matHeaderCellDef>Fiscal year</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.FISC_YEAR}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="DOC_NO">
+      <mat-header-cell *matHeaderCellDef>Document No</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.DOC_NO}} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="LC_AMOUNT">
+      <mat-header-cell *matHeaderCellDef> Local amount</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.LC_AMOUNT}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="CURRENCY">
+      <mat-header-cell *matHeaderCellDef> Currency</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.CURRENCY}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="PD_NO">
+      <mat-header-cell *matHeaderCellDef>Purchase doc no</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.PD_NO}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="MAT_NUM">
+        <mat-header-cell *matHeaderCellDef>Material no</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.MAT_NUM}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="QUANTITY">
+        <mat-header-cell *matHeaderCellDef> Quantity</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.QUANTITY}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="ORDER_UNIT">
+        <mat-header-cell *matHeaderCellDef> Order unit</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.ORDER_UNIT}} </mat-cell>
+      </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+  <mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress2"></mat-spinner>
+</div>
+<div *ngIf="istoggle2">
+  <h2 style="font-weight:bold">Debit memo</h2>
+<mat-table [dataSource]="debit" class="mat-elevation-z8" *ngIf="isavailable1 && !isprogress2">
+  
+    <ng-container matColumnDef="COMP_CODE">
+        <mat-header-cell *matHeaderCellDef>Company code</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.COMP_CODE}} </mat-cell>
+      </ng-container>
+    
+  
+      <ng-container matColumnDef="ITEM_NUM">
+        <mat-header-cell *matHeaderCellDef> Item no</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.ITEM_NUM}} </mat-cell>
+      </ng-container>
+  
+    
+      <ng-container matColumnDef="FISC_YEAR">
+        <mat-header-cell *matHeaderCellDef>Fiscal year</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.FISC_YEAR}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="DOC_NO">
+        <mat-header-cell *matHeaderCellDef>Document No</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.DOC_NO}} </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="LC_AMOUNT">
+        <mat-header-cell *matHeaderCellDef> Local amount</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.LC_AMOUNT}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="CURRENCY">
+        <mat-header-cell *matHeaderCellDef> Currency</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.CURRENCY}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="PD_NO">
+        <mat-header-cell *matHeaderCellDef>Purchase doc no</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.PD_NO}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="MAT_NUM">
+          <mat-header-cell *matHeaderCellDef>Material no</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.MAT_NUM}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="QUANTITY">
+          <mat-header-cell *matHeaderCellDef> Quantity</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.QUANTITY}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="ORDER_UNIT">
+          <mat-header-cell *matHeaderCellDef> Order unit</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.ORDER_UNIT}} </mat-cell>
+        </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns1"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns1;"></mat-row>
+  </mat-table>
+  <h4 class="alert alert-info" *ngIf="!isavailable1"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+  <mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress2"></mat-spinner>
+  </div>
+

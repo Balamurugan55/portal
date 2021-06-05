@@ -21,6 +21,7 @@ export class CusdeliveryComponent implements OnInit {
   istoggle1:any=true;
   istoggle2:any=true;
   obser:any;
+  isprogress1:any=false;
   displayedColumns:any=['VBELN','VSTEL','WADAT','INCO2','NTGEW','GEWEI','LFART','ERDAT','ERNAM','VKORG'];
   displayedColumns1:any=['VBELN','MATNR','MATWA','ARKTX','NTGEW','GEWEI','MBDAT','LGMNG','ERDAT','ERNAM'];
   constructor(private ser:CusporserviceService) { }
@@ -32,6 +33,7 @@ export class CusdeliveryComponent implements OnInit {
     //   this.salesdoc=data;
     //   console.log(this.salesdoc);
     // },err =>{console.log(err)});
+    this.isprogress1=true;
     this.obser=this.ser.get_cusdeli().subscribe(res=>{
       this.data=res;
       if(this.data.HEADER.length===0)
@@ -50,7 +52,8 @@ export class CusdeliveryComponent implements OnInit {
         this.deliveryline=this.data.LINE;
         //this.isavailable1=true;
       }
-    },err=>{console.log(err)});
+      this.isprogress1=false;
+    },err=>{console.log(err);this.isprogress1=false;});
   }
 //   ngOnDestroy(){
 //     this.obser.unsubscribe();

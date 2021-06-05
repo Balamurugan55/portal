@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class CusporserviceService {
   body:any={cusid:'11'};
   body1:any={cusid:'11',doctype:'0'};
   body2:any={saledoc:'10000048'};
+  static cusname=new BehaviorSubject('dummy');
+  cusnameob$=CusporserviceService.cusname.asObservable();
   get_Auth(body:any)
   {
     return this.http.post(this.url,body,{

@@ -6,10 +6,10 @@
 </mat-button-toggle-group>
 <div *ngIf="istoggle1">
 <h2 style="font-weight:bold">Credit memo</h2>
-<mat-table [dataSource]="credit" class="mat-elevation-z8" *ngIf="isavailable">
+<mat-table [dataSource]="credit" class="mat-elevation-z8" *ngIf="isavailable && !isprogress2">
   
     <ng-container matColumnDef="COMP_CODE">
-      <mat-header-cell *matHeaderCellDef>Company</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Company code</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.COMP_CODE}} </mat-cell>
     </ng-container>
   
@@ -56,13 +56,14 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+  <mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress2"></mat-spinner>
 </div>
 <div *ngIf="istoggle2">
   <h2 style="font-weight:bold">Debit memo</h2>
-<mat-table [dataSource]="debit" class="mat-elevation-z8" *ngIf="isavailable1">
+<mat-table [dataSource]="debit" class="mat-elevation-z8" *ngIf="isavailable1 && !isprogress2">
   
     <ng-container matColumnDef="COMP_CODE">
-      <mat-header-cell *matHeaderCellDef>Company</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Company code</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.COMP_CODE}} </mat-cell>
     </ng-container>
   
@@ -109,4 +110,5 @@
     <mat-row *matRowDef="let row; columns: displayedColumns1;"></mat-row>
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable1"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+  <mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress2"></mat-spinner>
   </div>

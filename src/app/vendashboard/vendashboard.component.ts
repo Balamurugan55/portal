@@ -6,7 +6,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { VenporserviceService } from '../venporservice.service';
 import { Router } from '@angular/router';
 import { TokenInterService } from '../token-inter.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { LogoutdialogComponent } from '../logoutdialog/logoutdialog.component';
 @Component({
   selector: 'app-vendashboard',
   templateUrl: './vendashboard.component.html',
@@ -22,9 +23,14 @@ export class VendashboardComponent implements OnInit {
       events:any;
       isdisplay2:any;
       isdisplay1:any;
-  constructor(private breakpointObserver: BreakpointObserver,private serv:VenporserviceService,private router:Router) {}
+      name:any;
+  constructor(private breakpointObserver: BreakpointObserver,private serv:VenporserviceService,private router:Router,private dialog:MatDialog) {}
   ngOnInit(): void {
     TokenInterService.stype='V';
+    this.serv.vennameob$.subscribe((res)=>{
+      this.name=res;
+    });
+    //this.name=VenporserviceService.venname;
     this.serv.getspecial().subscribe(
       (res)=>{ this.events = res},
       err=>{ 
@@ -41,7 +47,13 @@ export class VendashboardComponent implements OnInit {
 
   logout()
   {
-   this.serv.logout();
+    this.dialog.open(LogoutdialogComponent).afterClosed().subscribe(res=>{
+      console.log(res);
+      if(res==='true'){
+        this.serv.logout();
+      }
+    });
+   
   }
   display1(){
     this.isdisplay1=!this.isdisplay1;
@@ -49,6 +61,19 @@ export class VendashboardComponent implements OnInit {
   display2(){
     this.isdisplay2=!this.isdisplay2;
   }
-
+  getevent(event:any){
+    console.log(event);
+    this.name=event;
+  }
+  home(){
+    this.dialog.open(LogoutdialogComponent).afterClosed().subscribe(res=>{
+      console.log(res);
+      if(res==='true'){
+        this.serv.logout();
+        this.router.navigate(['home']);
+      }
+    });
+    
+  }
 
 }

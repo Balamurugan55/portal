@@ -16,8 +16,10 @@ import { CussignupComponent } from './cussignup/cussignup.component';
 import { HomeComponent } from './home/home.component';
 import { InquiryComponent } from './inquiry/inquiry.component';
 import { VenauthGuard } from './venauth.guard';
+import { VencredComponent } from './vencred/vencred.component';
 import { VendashboardComponent } from './vendashboard/vendashboard.component';
 import { VenloginComponent } from './venlogin/venlogin.component';
+import { VenpayageComponent } from './venpayage/venpayage.component';
 import { VenprofComponent } from './venprof/venprof.component';
 
 const routes: Routes = [
@@ -43,6 +45,10 @@ const routes: Routes = [
     component:CussignupComponent
   },
   {
+    path:"home/test",
+    component:CusdashboardComponent
+  },
+  {
     path:"home/vendor/vendashboard",
     component:VendashboardComponent,
     canActivate:[VenauthGuard],
@@ -50,6 +56,12 @@ const routes: Routes = [
       {
         path:"venprof",
         component:VenprofComponent
+      },{
+        path:"vencred",
+        component:VencredComponent
+      },{
+        path:"venpayage",
+        component:VenpayageComponent
       }
     ]
   },

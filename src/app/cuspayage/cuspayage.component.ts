@@ -10,10 +10,13 @@ export class CuspayageComponent implements OnInit {
   isavailable:any=false;
   payage:any=[];
   data:any;
+  isprogress2:any=false;
   displayedColumns:any=['COMP_CODE','ITEM_NUM','ALLOC_NMBR','FISC_YEAR','DOC_NO','DOC_DATE','LC_AMOUNT','CURRENCY','PSTNG_DATE','AGE'];
   constructor(private ser:CusporserviceService) { }
 
   ngOnInit(): void {
+      this.isprogress2=true;
+      this.isavailable=true;
       this.ser.get_cuspayage().subscribe(res=>{
         this.data=res;
         console.log(this.data);
@@ -25,7 +28,11 @@ export class CuspayageComponent implements OnInit {
           this.payage=this.data.PAYAGE;
           this.isavailable=true;
         }
-      },err=>{console.log(err)});
+        this.isprogress2=false;
+      },err=>{console.log(err);
+        this.isprogress2=false;
+        this.isavailable=false;
+      });
   }
 
 }

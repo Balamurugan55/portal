@@ -3,16 +3,14 @@
     <mat-card fxFlex="25" class="div1">
         <mat-toolbar color="primary">Master data</mat-toolbar>
         <form fxLayoutAlign="stretch" fxLayout="column" class="div2" #uploadform >
-            <input type="file" (change)="get_file($event)"><br>
-            <div class="progress" *ngIf="isupload">
-                <div class="progress-bar bg-success" [ngStyle]="{width:value}" ></div>
-            </div><br>
+            <input type="file" (change)="get_file($event)"><br><br>
             <div class="alert alert-info" *ngIf="isdisplay">
                 <h3 style="font-weight: bold;">Customer ids</h3>
                 <ul style="list-style-type: disc; margin-left:25%" *ngFor="let item of cusids">
                     <li>{{ item.cusid }}</li>
                 </ul>
             </div>
+            <mat-spinner class="spin" color="accent" diameter="50" *ngIf="isprogress"></mat-spinner>
             <div fxLayout="row">
             <button mat-raised-button color="primary" class="div3"(click)="upload(uploadform)">upload</button>
             <button mat-raised-button color="warn" (click)="clear(uploadform)">reset</button>

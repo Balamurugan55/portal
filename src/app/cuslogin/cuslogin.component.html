@@ -13,9 +13,11 @@
               </mat-form-field>
               <p *ngIf="!validity(loginform) && pass.touched" class="alert alert-warning">Enter the valid password</p>
               <p *ngIf="!signin && loginform.submitted" class="alert alert-danger">User credentials are wrong</p>
+              <mat-spinner class="div6" diameter="50" *ngIf="isprogress"></mat-spinner>
               <div fxLayout="row">
                 <button [disabled]="!loginform.valid || !validity(loginform)" mat-raised-button color="primary" type="submit" (click)="check()" class="div3">Sign in</button>
-              <button mat-raised-button color="accent" (click)="onclicksignup()">Sign Up</button>
+                <button mat-raised-button color="warn" (click)="home()" class="div5">Home</button>
+              <button mat-raised-button color="accent"  (click)="onclicksignup()">Sign Up</button>
               </div>
           
         </form>

@@ -15,6 +15,7 @@ export class VenloginComponent implements OnInit {
   body:any;
   res:any;
   obser:any;
+  isprogress:any=false;
   constructor(private router:Router,private ser:VenporserviceService) { }
 
   ngOnInit(): void {
@@ -25,14 +26,17 @@ export class VenloginComponent implements OnInit {
 // }
   onsubmit(loginform:NgForm)
   {
+    this.isprogress=true;
     this.body=JSON.stringify(loginform.value);
     console.log(this.body);
     this.obser=this.ser.get_venauth(this.body).subscribe((data) => {
       this.res=data;
-      console.log(this.res.tok);
+      console.log(this.res);
       localStorage.setItem('ventoken',this.res.tok);
       this.router.navigate(['home/vendor/vendashboard']);
       this.ser.body.venid=loginform.value.venid;
+      VenporserviceService.venname.next(this.res.name);
+      this.isprogress=false;
     // if(data == true)
     // {
     //   this.router.navigate(['home/customer/cusdashboard']);
@@ -43,6 +47,7 @@ export class VenloginComponent implements OnInit {
     // }
     },
     (err) => {console.log(err);
+      this.isprogress=false;
       this.signin=false;
       setTimeout(() =>{this.signin=true;},3000)
     }
@@ -62,8 +67,8 @@ export class VenloginComponent implements OnInit {
   check():any{
     
   }
-  onclicksignup()
+  home()
   {
-    this.router.navigate(['home/vendor/signup']);
+    this.router.navigate(['home']);
   }
 }

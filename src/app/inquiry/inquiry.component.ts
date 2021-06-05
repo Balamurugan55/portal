@@ -20,19 +20,26 @@ export class InquiryComponent implements OnInit {
   obser2:any;
   istoggle1:any=true;
   istoggle2:any=true;
+  isprogress1:any=true;
+  isprogress2:any=false;
   displayedColumns:any=['OPER','REC_DATE','REC_TIME','CREATED_BY','DOC_DATE','TRAN_GROUP','DOC_TYPE','NET_VAL','CURRENCY','SALES_ORG'];
   displayedColumns1:any=['DOC_NUMBER','ITM_NUMBER','MATERIAL','MAT_ENTRD','MATL_GROUP','SHORT_TEXT','ITEM_CATEG','ORDER_PROB','CREAT_DATE','CREATED_BY'];
   constructor(private ser:CusporserviceService) { }
   
   ngOnInit(): void {
+    this.isprogress1=true;
     this.ser.body1.doctype='A';
     this.ser.body1.cusid=this.ser.body.cusid;
     this.obser1=this.ser.get_cussale().subscribe(data =>{
       this.salesdoc=data;
       console.log(this.salesdoc);
-    },err =>{console.log(err)});
+      this.isprogress1=false;
+    },err =>{console.log(err);this.isprogress1=false;});
   }
   getdetails(){
+    this.isprogress2=true;
+    this.isavailable1=true;
+    this.isavailable=true;
     console.log(this.selected);
     this.line=[];
     this.header=[];
@@ -66,7 +73,12 @@ export class InquiryComponent implements OnInit {
       }
       console.log(this.line);
       console.log(this.header);
-    },err=>{console.log(err)});
+      this.isprogress2=false;
+    },err=>{console.log(err);
+      this.isprogress2=false;
+      this.isavailable1=false;
+      this.isavailable=false;
+    });
   }
   dotoggle(){
     if(this.toggle==='header'){

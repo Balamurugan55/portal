@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { VenporserviceService } from '../venporservice.service';
 
@@ -34,9 +34,13 @@ export class VenprofComponent implements OnInit {
   data:any;
   obser:any;
   obser1:any;
+  isprogress1:any=false;
+  isprogress2:any=false;
+  @Output() server = new EventEmitter();
   constructor(private serv:VenporserviceService) { }
 
   ngOnInit(): void {
+      this.isprogress1=true;
       this.obser=this.serv.get_venprof().subscribe(res => {
         console.log(res);
         this.result=res;
@@ -50,8 +54,9 @@ export class VenprofComponent implements OnInit {
         this.district=this.result.DISTRICT;
         this.region=this.result.REGION;
         this.street=this.result.STREET;
+        this.isprogress1=false;
       },
-      err=>{console.log(err)}
+      err=>{console.log(err);this.isprogress1=false;}
       );
   }
 //   ngOnDestroy(){
@@ -60,6 +65,7 @@ export class VenprofComponent implements OnInit {
 // }
   onsubmit(profile:NgForm)
   {
+      this.isprogress2=true;
       console.log(this.country);
       this.body={venid:this.venid,
         fname:this.fname,
@@ -79,12 +85,15 @@ export class VenprofComponent implements OnInit {
         {
               this.issaved=true;
               setTimeout(()=>{this.issaved=false},3000);
+              VenporserviceService.venname.next(this.fname);
         }
         else{
           this.isnotsaved=true;
           setTimeout(()=>{this.isnotsaved=false},3000);
         }
-      },err=>{console.log(err)});
+      this.isprogress2=false;
+      },err=>{console.log(err);this.isprogress2=false;});
+      
       this.isedit1=false;
       this.isedit2=false;
       this.isedit3=false;

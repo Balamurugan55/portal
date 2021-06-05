@@ -32,9 +32,12 @@ export class CusprofileComponent implements OnInit {
   data:any;
   obser:any;
   obser1:any;
+  isprogress1:any=false;
+  isprogress2:any=false;
   constructor(private serv:CusporserviceService) { }
 
   ngOnInit(): void {
+      this.isprogress1=true;
       this.obser=this.serv.get_cusprof().subscribe(res => {
         console.log(res);
         this.result=res;
@@ -47,8 +50,9 @@ export class CusprofileComponent implements OnInit {
         this.cusname=this.result.cusname;
         this.cusregion=this.result.RETURN.MESSAGE_V2;
         this.cusstreet=this.result.RETURN.MESSAGE_V1;
+        this.isprogress1=false;
       },
-      err=>{console.log(err)}
+      err=>{console.log(err);this.isprogress1=false;}
       );
   }
 //   ngOnDestroy(){
@@ -57,6 +61,7 @@ export class CusprofileComponent implements OnInit {
 // }
   onsubmit(profile:NgForm)
   {
+      this.isprogress2=true;
       console.log(this.cuscountry);
       this.body={cusid:this.cusid,
         cusname:this.cusname,
@@ -74,13 +79,16 @@ export class CusprofileComponent implements OnInit {
         if(this.data.TYPE==='S')
         {
               this.issaved=true;
+              this.isprogress2=false;
               setTimeout(()=>{this.issaved=false},3000);
+              CusporserviceService.cusname.next(this.cusname);
         }
         else{
           this.isnotsaved=true;
+          this.isprogress2=false;
           setTimeout(()=>{this.isnotsaved=false},3000);
         }
-      },err=>{console.log(err)});
+      },err=>{console.log(err);this.isprogress2=false;});
       this.isedit2=false;
       this.isedit3=false;
       this.isedit4=false;

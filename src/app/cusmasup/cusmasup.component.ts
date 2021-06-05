@@ -16,6 +16,7 @@ export class CusmasupComponent implements OnInit {
   event:any;
   isdisplay:any=false;
   cusids:any=[];
+  isprogress:any=false;
   constructor(private ser:CusporserviceService) { 
     // this.uploader.onCompleteItem = (item:any, res:any , status:any, headers:any) => {
     //   console.log(res);}
@@ -28,6 +29,7 @@ export class CusmasupComponent implements OnInit {
       this.file=event.target.files[0];
   }
   upload(form:any){
+      this.isprogress=true;
       this.fd=new FormData();
       this.fd.append('file',this.file,this.file.name);
       this.ser.uploadfile(this.fd).subscribe(res=>{
@@ -42,6 +44,7 @@ export class CusmasupComponent implements OnInit {
             console.log(res);
             this.cusids=this.event.body;
             this.isupload=false;
+            this.isprogress=false;
             if(this.cusids.length!=0)
             {
             this.isdisplay=true;

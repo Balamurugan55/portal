@@ -5,6 +5,7 @@
   <mat-button-toggle value="both">Both</mat-button-toggle>
 </mat-button-toggle-group>
 <h4 style="font-weight:bold">Sales document number</h4>
+<div fxLayout="row">
 <mat-form-field appearance="fill">
   <mat-label>Sales document number</mat-label>
   <mat-select [(value)]="selected">
@@ -13,6 +14,8 @@
     </mat-option>
   </mat-select>
 </mat-form-field>
+<mat-spinner class="spin1" color="accent" diameter="40" *ngIf="isprogress1"></mat-spinner>
+</div>
 <div *ngIf="istoggle1">
 <h2 style="font-weight:bold">Sales orders header items</h2>
 <mat-table [dataSource]="item" class="mat-elevation-z8" *ngIf="isavailable">

@@ -37,6 +37,11 @@ import { CusmasupComponent } from './cusmasup/cusmasup.component';
 import { VenloginComponent } from './venlogin/venlogin.component';
 import { VendashboardComponent } from './vendashboard/vendashboard.component';
 import { VenprofComponent } from './venprof/venprof.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { LogoutdialogComponent } from './logoutdialog/logoutdialog.component';
+import { VencredComponent } from './vencred/vencred.component';
+import { VenpayageComponent } from './venpayage/venpayage.component';
+import{MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,8 +61,12 @@ import { VenprofComponent } from './venprof/venprof.component';
     CusmasupComponent,
     VenloginComponent,
     VendashboardComponent,
-    VenprofComponent
+    VenprofComponent,
+    LogoutdialogComponent,
+    VencredComponent,
+    VenpayageComponent
   ],
+  entryComponents:[LogoutdialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -76,7 +85,9 @@ import { VenprofComponent } from './venprof/venprof.component';
     HttpClientModule,
     MatSelectModule,
     MatTableModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [CusporserviceService,TokenInterService,AuthGuard,{
     provide:HTTP_INTERCEPTORS,

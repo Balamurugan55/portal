@@ -5,6 +5,7 @@
   <mat-button-toggle value="both">Both</mat-button-toggle>
 </mat-button-toggle-group>
 <h4 style="font-weight:bold">Sales document number</h4>
+<div fxLayout="row">
 <mat-form-field appearance="fill">
   <mat-label>Sales document number</mat-label>
   <mat-select [(value)]="selected">
@@ -12,10 +13,13 @@
       {{sale.VBELN}}
     </mat-option>
   </mat-select>
+
 </mat-form-field>
+<mat-spinner class="spin1" color="accent" diameter="40" *ngIf="isprogress1"></mat-spinner>
+</div>
 <div *ngIf="istoggle1">
 <h2 style="font-weight:bold">Inquiry header items</h2>
-<mat-table [dataSource]="header" class="mat-elevation-z8" *ngIf="isavailable">
+<mat-table [dataSource]="header" class="mat-elevation-z8" *ngIf="isavailable && !isprogress2">
     <ng-container matColumnDef="OPER">
       <mat-header-cell *matHeaderCellDef> Operation </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.OPER}} </mat-cell>
@@ -65,10 +69,11 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+  <mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress2"></mat-spinner>
   </div>
   <div *ngIf="istoggle2">
   <h2 style="font-weight:bold">Inquiry line items</h2>
-  <mat-table [dataSource]="line" class="mat-elevation-z8" *ngIf="isavailable1">
+  <mat-table [dataSource]="line" class="mat-elevation-z8" *ngIf="isavailable1 && !isprogress2">
     <ng-container matColumnDef="DOC_NUMBER">
       <mat-header-cell *matHeaderCellDef> Document no</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.DOC_NUMBER}} </mat-cell>
@@ -119,4 +124,5 @@
     <mat-row *matRowDef="let row; columns: displayedColumns1;"></mat-row>
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable1"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+  <mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress2"></mat-spinner>
   </div>

@@ -16,6 +16,7 @@ export class CusloginComponent implements OnInit {
   body:any;
   res:any;
   obser:any;
+  isprogress:any=false;
   constructor(private router:Router,private ser:CusporserviceService,private ser1:TokenInterService) { }
 
   ngOnInit(): void {
@@ -27,14 +28,17 @@ export class CusloginComponent implements OnInit {
 // }
   onsubmit(loginform:NgForm)
   {
+    this.isprogress=true;
     this.body=JSON.stringify(loginform.value);
     console.log(this.body);
     this.obser=this.ser.get_Auth(this.body).subscribe((data) => {
       this.res=data;
       console.log(this.res.tok);
       localStorage.setItem('token',this.res.tok);
+      this.isprogress=false;
       this.router.navigate(['home/customer/cusdashboard']);
       this.ser.body.cusid=loginform.value.cusid;
+      CusporserviceService.cusname.next(this.res.name1);
     // if(data == true)
     // {
     //   this.router.navigate(['home/customer/cusdashboard']);
@@ -46,6 +50,7 @@ export class CusloginComponent implements OnInit {
     },
     (err) => {console.log(err);
       this.signin=false;
+      this.isprogress=false;
       setTimeout(() =>{this.signin=true;},3000)
     }
     );
@@ -67,6 +72,9 @@ export class CusloginComponent implements OnInit {
   onclicksignup()
   {
     this.router.navigate(['home/customer/signup']);
+  }
+  home(){
+    this.router.navigate(['home']);
   }
 
 }

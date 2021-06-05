@@ -12,10 +12,11 @@
       <a mat-list-item *ngIf="isdisplay1" routerLink="cusdelivery" class="item"><mat-icon class="icon">lens</mat-icon>List of delivery</a>
       <a mat-list-item (click)="display2()"><mat-icon >{{isdisplay2 ? 'expand_more' : 'chevron_right'}}</mat-icon>Financial sheet</a>
       <a mat-list-item *ngIf="isdisplay2" routerLink="cusinvoice" class="item"><mat-icon class="icon">lens</mat-icon>Invoice details</a>
-      <a mat-list-item *ngIf="isdisplay2" routerLink="cuspayage" class="item"><mat-icon class="icon">lens</mat-icon>Payments and aging</a>
-      <a mat-list-item *ngIf="isdisplay2" routerLink="cuscredit" class="item"><mat-icon class="icon">lens</mat-icon>Credit/Debit memo</a>
+      <a mat-list-item *ngIf="isdisplay2" routerLink="venpayage" class="item"><mat-icon class="icon">lens</mat-icon>Payments and aging</a>
+      <a mat-list-item *ngIf="isdisplay2" routerLink="vencred" class="item"><mat-icon class="icon">lens</mat-icon>Credit/Debit memo</a>
       <a mat-list-item *ngIf="isdisplay2" routerLink="cusoverallsales" class="item"><mat-icon class="icon">lens</mat-icon>Overall sales data</a>
       <a mat-list-item routerLink="cusmasup"><mat-icon>upload</mat-icon>Customer master data </a>
+      <a mat-list-item (click)="home()"><mat-icon>home</mat-icon>Home</a>
       <a mat-list-item (click)="logout()"><mat-icon>logout</mat-icon>Log out</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -30,6 +31,8 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
      <p class="align" id="abc">Vendor portal</p>
+     <mat-icon>account_circle</mat-icon>
+     <p class="div2">{{name}}</p>
     </mat-toolbar>
    <router-outlet></router-outlet>
   </mat-sidenav-content>

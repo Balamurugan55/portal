@@ -18,7 +18,8 @@
               <p *ngIf="!validity(regform) && pass.touched" class="alert alert-warning">Enter the valid password</p>
               <p *ngIf="issuccess" class="alert alert-success">Successfully registered. Your customer id is {{cusid}}</p>
               <p *ngIf="iserror" class="alert alert-danger">error occurred</p>
-              <button [disabled]="!regform.valid || !validity(regform)" mat-raised-button color="primary" type="submit" class="div3">Register</button>
+              <mat-spinner class="spin" diameter="50" *ngIf="isprogress" color="warn"></mat-spinner>
+              <button [disabled]="!regform.valid || !validity(regform)" mat-raised-button color="accent" type="submit" class="div3">Register</button>
           </form>
           
     </mat-card>

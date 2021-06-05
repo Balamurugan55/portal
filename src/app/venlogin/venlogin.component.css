@@ -8,5 +8,10 @@
     margin-right: auto;
 }
 .div4{
-    background-image:url("E:\kaar internship\portals\customer portal\angular\portal\src\assets\images\sap1.jpg");
+    background-image:url("E:\kaar internship\portals\customer portal\angular\portal\src\assets\images\sap2.jpg");
+    background-size: 100% ;  
+    background-size:cover;
+}
+.spin{
+    margin: auto;
 }

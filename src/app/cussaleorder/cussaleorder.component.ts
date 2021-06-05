@@ -16,11 +16,13 @@ export class CussaleorderComponent implements OnInit {
   istoggle1:any=true;
   istoggle2:any=true;
   obser:any;
+  isprogress1:any=false;
   displayedColumns:any=['SD_DOC','NAME','DOC_DATE','CURRENCY','SALES_ORG','EXCHG_RATE','DIVISION','PLANT','STORE_LOC','SHIP_POINT'];
   displayedColumns1:any=['SD_DOC','ITM_NUMBER','MATERIAL','SHORT_TEXT','DLV_QTY','SALES_UNIT','NET_VAL','DOC_STATUS','CREATION_DATE','CREATION_TIME'];
   constructor(private ser:CusporserviceService) { }
 
   ngOnInit(): void {
+      this.isprogress1=true;
       this.obser=this.ser.get_cussaleor().subscribe(res=>{
         this.data=res;
         if(this.data.SALESORDERS.length===0) {
@@ -30,6 +32,9 @@ export class CussaleorderComponent implements OnInit {
           this.salesorders=this.data.SALESORDERS;
           //this.isavailable=true;
         }
+        this.isprogress1=false;
+      },err=>{console.log(err);
+        this.isprogress1=false;
       });
       
   }

@@ -13,9 +13,9 @@
       <mat-cell *matCellDef="let element"> {{element.ITEM_NUM}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="ALLOC_NMBR">
-      <mat-header-cell *matHeaderCellDef> Allocation number</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.ALLOC_NMBR}} </mat-cell>
+    <ng-container matColumnDef="BLINE_DATE">
+      <mat-header-cell *matHeaderCellDef> Baseline date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.BLINE_DATE}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="FISC_YEAR">
       <mat-header-cell *matHeaderCellDef>Fiscal year</mat-header-cell>
@@ -51,3 +51,4 @@
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
   <mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress2"></mat-spinner>
+
