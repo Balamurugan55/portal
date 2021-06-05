@@ -19,7 +19,11 @@
               <p *ngIf="issuccess" class="alert alert-success">Successfully registered. Your customer id is {{cusid}}</p>
               <p *ngIf="iserror" class="alert alert-danger">error occurred</p>
               <mat-spinner class="spin" diameter="50" *ngIf="isprogress" color="warn"></mat-spinner>
+              <div fxLayout="row">
+                <button mat-raised-button color="primary" (click)="signin()" class="div5">Sign in</button>
+              <button mat-raised-button color="warn" (click)="home()" class="div4">Home</button>
               <button [disabled]="!regform.valid || !validity(regform)" mat-raised-button color="accent" type="submit" class="div3">Register</button>
+              </div>
           </form>
           
     </mat-card>

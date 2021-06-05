@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CusporserviceService } from '../cusporservice.service';
 import { TokenInterService } from '../token-inter.service';
 
@@ -14,7 +15,7 @@ export class CussignupComponent implements OnInit {
   issuccess:any=false;
   cusid:any;
   isprogress:any=false;
-  constructor(private ser:CusporserviceService) { }
+  constructor(private ser:CusporserviceService,private router:Router) { }
 
   ngOnInit(): void {
     TokenInterService.stype='C';
@@ -44,6 +45,12 @@ export class CussignupComponent implements OnInit {
     }
     return false
   }
-
+  home()
+  {
+    this.router.navigate(['home']);
+  }
+  signin(){
+    this.router.navigate(['home/customer']);
+  }
 
 }
