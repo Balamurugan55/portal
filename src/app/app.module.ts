@@ -42,6 +42,8 @@ import { LogoutdialogComponent } from './logoutdialog/logoutdialog.component';
 import { VencredComponent } from './vencred/vencred.component';
 import { VenpayageComponent } from './venpayage/venpayage.component';
 import{MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { VenrfqComponent } from './venrfq/venrfq.component';
+import { VengrComponent } from './vengr/vengr.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +66,9 @@ import{MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     VenprofComponent,
     LogoutdialogComponent,
     VencredComponent,
-    VenpayageComponent
+    VenpayageComponent,
+    VenrfqComponent,
+    VengrComponent
   ],
   entryComponents:[LogoutdialogComponent],
   imports: [

@@ -59,4 +59,16 @@ export class VenporserviceService {
       headers:new HttpHeaders().append('Content-Type', 'application/json')
     });
   }
+  get_venrfq(){
+    return this.http.post(this.url+'/venrfq',this.body,{
+      observe:'body',
+      headers:new HttpHeaders().append('Content-Type', 'application/json')
+    });
+  }
+  get_vengr(){
+    return this.http.post(this.url+'/vengr',this.body,{
+      observe:'body',
+      headers:new HttpHeaders().append('Content-Type', 'application/json')
+    });
+  }
 }

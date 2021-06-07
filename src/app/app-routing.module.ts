@@ -18,9 +18,11 @@ import { InquiryComponent } from './inquiry/inquiry.component';
 import { VenauthGuard } from './venauth.guard';
 import { VencredComponent } from './vencred/vencred.component';
 import { VendashboardComponent } from './vendashboard/vendashboard.component';
+import { VengrComponent } from './vengr/vengr.component';
 import { VenloginComponent } from './venlogin/venlogin.component';
 import { VenpayageComponent } from './venpayage/venpayage.component';
 import { VenprofComponent } from './venprof/venprof.component';
+import { VenrfqComponent } from './venrfq/venrfq.component';
 
 const routes: Routes = [
   {
@@ -62,6 +64,12 @@ const routes: Routes = [
       },{
         path:"venpayage",
         component:VenpayageComponent
+      },{
+        path:"venrfq",
+        component:VenrfqComponent
+      },{
+        path:"vengr",
+        component:VengrComponent
       }
     ]
   },
