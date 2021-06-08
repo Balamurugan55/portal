@@ -22,6 +22,8 @@ export class InquiryComponent implements OnInit {
   istoggle2:any=true;
   isprogress1:any=true;
   isprogress2:any=false;
+  index:any=-1;
+  index1:any=-1;
   displayedColumns:any=['OPER','REC_DATE','REC_TIME','CREATED_BY','DOC_DATE','TRAN_GROUP','DOC_TYPE','NET_VAL','CURRENCY','SALES_ORG'];
   displayedColumns1:any=['DOC_NUMBER','ITM_NUMBER','MATERIAL','MAT_ENTRD','MATL_GROUP','SHORT_TEXT','ITEM_CATEG','ORDER_PROB','CREAT_DATE','CREATED_BY'];
   constructor(private ser:CusporserviceService) { }
@@ -94,5 +96,10 @@ export class InquiryComponent implements OnInit {
       this.istoggle2=true;
     }
   }
-
+  mouse(ind:any){
+    this.index=ind;
+  }
+  mouse1(ind:any){
+    this.index1=ind;
+  }
 }

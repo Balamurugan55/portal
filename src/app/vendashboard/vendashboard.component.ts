@@ -26,6 +26,7 @@ export class VendashboardComponent implements OnInit {
       name:any;
   constructor(private breakpointObserver: BreakpointObserver,private serv:VenporserviceService,private router:Router,private dialog:MatDialog) {}
   ngOnInit(): void {
+    console.log(VenporserviceService.token);
     TokenInterService.stype='V';
     this.serv.vennameob$.subscribe((res)=>{
       this.name=res;

@@ -12,6 +12,7 @@ export class CusporserviceService {
   body:any={cusid:'11'};
   body1:any={cusid:'11',doctype:'0'};
   body2:any={saledoc:'10000048'};
+  static token:any;
   static cusname=new BehaviorSubject('dummy');
   cusnameob$=CusporserviceService.cusname.asObservable();
   get_Auth(body:any)
@@ -27,7 +28,7 @@ export class CusporserviceService {
   }
   loggedin()
   {
-    return !!localStorage.getItem('token');
+    return !!(CusporserviceService.token);
   }
   logout()
   {

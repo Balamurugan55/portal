@@ -54,7 +54,7 @@
         <mat-cell *matCellDef="let element"> {{element.ORDER_UNIT}} </mat-cell>
       </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row *matRowDef="let row;let ind=index; columns: displayedColumns;" (mouseover)="mouse(ind)" [ngClass] = "{'mat-elevation-z24 bold' : ind == index}" style="background: none;"></mat-row>
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
   <mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress2"></mat-spinner>
@@ -110,7 +110,7 @@
         </ng-container>
   
     <mat-header-row *matHeaderRowDef="displayedColumns1"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns1;"></mat-row>
+    <mat-row *matRowDef="let row;let ind1=index; columns: displayedColumns1;" (mouseover)="mouse1(ind1)" [ngClass] = "{'mat-elevation-z24 bold' : ind1 == index1}" style="background: none;"></mat-row>
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable1"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
   <mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress2"></mat-spinner>

@@ -15,6 +15,8 @@ export class VengrComponent implements OnInit {
   grheader:any=[];
   grline:any=[];
   selected:any;
+  index:any=-1;
+  index1:any=-1;
   data:any;
   toggle:any;
   istoggle1:any=true;
@@ -77,5 +79,11 @@ export class VengrComponent implements OnInit {
       this.isavailable1=true;
     }
     console.log(this.line);
+  }
+  mouse(ind:any){
+    this.index=ind;
+  }
+  mouse1(ind:any){
+    this.index1=ind;
   }
 }

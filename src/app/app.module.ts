@@ -44,6 +44,8 @@ import { VenpayageComponent } from './venpayage/venpayage.component';
 import{MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { VenrfqComponent } from './venrfq/venrfq.component';
 import { VengrComponent } from './vengr/vengr.component';
+import {MatRippleModule} from '@angular/material/core';
+import {MatSortModule} from '@angular/material/sort';
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +93,9 @@ import { VengrComponent } from './vengr/vengr.component';
     MatTableModule,
     MatButtonToggleModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatRippleModule,
+    MatSortModule
   ],
   providers: [CusporserviceService,TokenInterService,AuthGuard,{
     provide:HTTP_INTERCEPTORS,

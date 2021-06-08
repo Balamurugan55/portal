@@ -11,3 +11,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     text-align: center;
     justify-content:center;
   }
+  .mat-table {
+    overflow: auto;
+    margin-left:10px;
+    margin-right: 10px;
+  }
+.bold{
+    font-weight: bold;
+}

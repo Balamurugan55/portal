@@ -10,6 +10,7 @@ export class VenporserviceService {
   url='http://localhost:3000/venporauth';
   constructor(private http:HttpClient,private router:Router) { }
   body={venid:'10067'};
+  static token:any;
   static venname=new BehaviorSubject('dummy');
   vennameob$=VenporserviceService.venname.asObservable();
   get_venauth(body:any)
@@ -25,11 +26,12 @@ export class VenporserviceService {
   }
   loggedin()
   {
-    return !!localStorage.getItem('ventoken');
+    return !!(VenporserviceService.token);
   }
   logout()
   {
     localStorage.removeItem('ventoken');
+    VenporserviceService.token =null;
     this.router.navigate(['home/vendor']);
   }
   get_venprof()

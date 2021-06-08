@@ -1,53 +1,53 @@
 <mat-toolbar color="accent" ><p class="align" id="abc">Payment and aging</p></mat-toolbar>
 <h2 style="font-weight:bold">Account details</h2>
-<mat-table [dataSource]="payage" class="mat-elevation-z8" *ngIf="isavailable && !isprogress2">
+<mat-table [dataSource]="payage" class="mat-elevation-z8" matSort *ngIf="isavailable && !isprogress2">
   
     <ng-container matColumnDef="COMP_CODE">
-      <mat-header-cell *matHeaderCellDef>Company code</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Company code</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.COMP_CODE}} </mat-cell>
     </ng-container>
   
 
     <ng-container matColumnDef="ITEM_NUM">
-      <mat-header-cell *matHeaderCellDef> Item no</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Item no</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.ITEM_NUM}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="BLINE_DATE">
-      <mat-header-cell *matHeaderCellDef> Baseline date</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Baseline date</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.BLINE_DATE}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="FISC_YEAR">
-      <mat-header-cell *matHeaderCellDef>Fiscal year</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Fiscal year</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.FISC_YEAR}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="DOC_NO">
-      <mat-header-cell *matHeaderCellDef>Document No</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Document No</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.DOC_NO}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="DOC_DATE">
-      <mat-header-cell *matHeaderCellDef> DOC date</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> DOC date</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.DOC_DATE}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="LC_AMOUNT">
-      <mat-header-cell *matHeaderCellDef> Local amount</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Local amount</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.LC_AMOUNT}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="CURRENCY">
-      <mat-header-cell *matHeaderCellDef> Currency</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Currency</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.CURRENCY}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="PSTNG_DATE">
-      <mat-header-cell *matHeaderCellDef>Posting date</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Posting date</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.PSTNG_DATE}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="AGE">
-        <mat-header-cell *matHeaderCellDef>Age</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Age</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.AGE}} </mat-cell>
       </ng-container>
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row *matRowDef="let row;let ind=index; columns: displayedColumns;" (mouseover)="mouse(ind)" [ngClass] = "{'mat-elevation-z24 bold' : ind == index}" style="background: none;"></mat-row>
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
   <mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress2"></mat-spinner>

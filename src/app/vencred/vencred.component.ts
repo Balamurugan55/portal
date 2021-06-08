@@ -17,6 +17,8 @@ export class VencredComponent implements OnInit {
   istoggle1:any=true;
   istoggle2:any=true;
   obser:any;
+  index:any=-1;
+  index1:any=-1;
   isprogress2:any=false;
   displayedColumns:any=['COMP_CODE','ITEM_NUM','FISC_YEAR','DOC_NO','LC_AMOUNT','CURRENCY','PD_NO','MAT_NUM','QUANTITY','ORDER_UNIT'];
   displayedColumns1:any=['COMP_CODE','ITEM_NUM','FISC_YEAR','DOC_NO','LC_AMOUNT','CURRENCY','PD_NO','MAT_NUM','QUANTITY','ORDER_UNIT'];
@@ -68,5 +70,10 @@ export class VencredComponent implements OnInit {
       this.istoggle2=true;
     }
   }
-
+  mouse(ind:any){
+    this.index=ind;
+  }
+  mouse1(ind:any){
+    this.index1=ind;
+  }
 }

@@ -19,6 +19,7 @@ export class VenloginComponent implements OnInit {
   constructor(private router:Router,private ser:VenporserviceService) { }
 
   ngOnInit(): void {
+    console.log(VenporserviceService.token);
       TokenInterService.stype='V';
   }
 //   ngOnDestroy(){
@@ -33,6 +34,7 @@ export class VenloginComponent implements OnInit {
       this.res=data;
       console.log(this.res);
       localStorage.setItem('ventoken',this.res.tok);
+      VenporserviceService.token=this.res.tok;
       this.router.navigate(['home/vendor/vendashboard']);
       this.ser.body.venid=loginform.value.venid;
       VenporserviceService.venname.next(this.res.name);

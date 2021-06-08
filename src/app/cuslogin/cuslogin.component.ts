@@ -35,6 +35,7 @@ export class CusloginComponent implements OnInit {
       this.res=data;
       console.log(this.res.tok);
       localStorage.setItem('token',this.res.tok);
+      CusporserviceService.token=this.res.tok;
       this.isprogress=false;
       this.router.navigate(['home/customer/cusdashboard']);
       this.ser.body.cusid=loginform.value.cusid;

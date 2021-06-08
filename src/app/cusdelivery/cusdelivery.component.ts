@@ -21,6 +21,8 @@ export class CusdeliveryComponent implements OnInit {
   istoggle1:any=true;
   istoggle2:any=true;
   obser:any;
+  index:any=-1;
+  index1:any=-1;
   isprogress1:any=false;
   displayedColumns:any=['VBELN','VSTEL','WADAT','INCO2','NTGEW','GEWEI','LFART','ERDAT','ERNAM','VKORG'];
   displayedColumns1:any=['VBELN','MATNR','MATWA','ARKTX','NTGEW','GEWEI','MBDAT','LGMNG','ERDAT','ERNAM'];
@@ -83,6 +85,12 @@ export class CusdeliveryComponent implements OnInit {
       this.istoggle1=true;
       this.istoggle2=true;
     }
+  }
+  mouse(ind:any){
+    this.index=ind;
+  }
+  mouse1(ind:any){
+    this.index1=ind;
   }
 
 

@@ -16,6 +16,8 @@ export class VenrfqComponent implements OnInit {
   selected:any;
   data:any;
   toggle:any;
+  index:any=-1;
+  index1:any=-1;
   istoggle1:any=true;
   istoggle2:any=true;
   obser:any;
@@ -77,5 +79,10 @@ export class VenrfqComponent implements OnInit {
     }
     console.log(this.line);
   }
-
+  mouse(ind:any){
+    this.index=ind;
+  }
+  mouse1(ind:any){
+    this.index1=ind;
+  }
 }
