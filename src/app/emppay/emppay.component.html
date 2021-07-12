@@ -1,0 +1,64 @@
+<mat-toolbar color="accent" ><p class="align" id="abc">Pay slip</p></mat-toolbar>
+<div *ngIf="istoggle1">
+<h2 style="font-weight:bold">Pay slip header</h2>
+<mat-table [dataSource]="paydet" class="mat-elevation-z8" *ngIf="isavailable && !isprogress2">
+  <ng-container matColumnDef="col1">
+      <mat-header-cell *matHeaderCellDef>Sequence no</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col1}} </mat-cell>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="col2">
+      <mat-header-cell *matHeaderCellDef> FP period</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col2}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="col3">
+      <mat-header-cell *matHeaderCellDef>FP begin</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col3}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="col4">
+      <mat-header-cell *matHeaderCellDef>FP end</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col4}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="col5">
+      <mat-header-cell *matHeaderCellDef>Pay date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col5}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="col6">
+      <mat-header-cell *matHeaderCellDef>Pay type</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col6}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="col7">
+      <mat-header-cell *matHeaderCellDef>Pay id</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col7}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="col8">
+      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col8}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="col9">
+      <mat-header-cell *matHeaderCellDef>OC reason</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col9}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="col10">
+        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.col10}} </mat-cell>
+      </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row;let ind=index; columns: displayedColumns;" (mouseover)="mouse(ind)" (click)="items(ind)" (mouseout)="mouseout()" [ngClass] = "{'mat-elevation-z24 bold' : ind == index}" style="background: none;"></mat-row>
+</mat-table>
+<h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+<mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress2"></mat-spinner>
+  </div>
+<h2 style="font-weight:bold">Payslip pdf</h2>
+<iframe *ngIf="isavailable1" [src]="payslip | safe" type="application/pdf" width="100%" height="100%"></iframe>
+<h4 class="alert alert-info" *ngIf="!isavailable1"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+
+  
+
+
+
+
+

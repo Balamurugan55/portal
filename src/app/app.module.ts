@@ -46,6 +46,28 @@ import { VenrfqComponent } from './venrfq/venrfq.component';
 import { VengrComponent } from './vengr/vengr.component';
 import {MatRippleModule} from '@angular/material/core';
 import {MatSortModule} from '@angular/material/sort';
+import { VeninvComponent } from './veninv/veninv.component';
+import { SafePipe } from './safe.pipe';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker'
+import { DialogsaleorderComponent } from './dialogsaleorder/dialogsaleorder.component';
+import { DelidialogComponent } from './delidialog/delidialog.component';
+import { InqdialogComponent } from './inqdialog/inqdialog.component';
+import { RfqdialogComponent } from './rfqdialog/rfqdialog.component';
+import { GrdialogComponent } from './grdialog/grdialog.component';
+import { EmploginComponent } from './emplogin/emplogin.component';
+import { EmpdashboardComponent } from './empdashboard/empdashboard.component';
+import { EmpprofComponent } from './empprof/empprof.component';
+import { VenpoComponent } from './venpo/venpo.component';
+import { PodialogComponent } from './podialog/podialog.component';
+import { EmpldetComponent } from './empldet/empldet.component';
+import { EmplreqComponent } from './emplreq/emplreq.component';
+import { EmppayComponent } from './emppay/emppay.component';
+import { NotifypoComponent } from './notifypo/notifypo.component';
+import { EmpfsetComponent } from './empfset/empfset.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatGridListModule} from '@angular/material/grid-list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,12 +92,30 @@ import {MatSortModule} from '@angular/material/sort';
     VencredComponent,
     VenpayageComponent,
     VenrfqComponent,
-    VengrComponent
+    VengrComponent,
+    VeninvComponent,
+    SafePipe,
+    DialogsaleorderComponent,
+    DelidialogComponent,
+    InqdialogComponent,
+    RfqdialogComponent,
+    GrdialogComponent,
+    EmploginComponent,
+    EmpdashboardComponent,
+    EmpprofComponent,
+    VenpoComponent,
+    PodialogComponent,
+    EmpldetComponent,
+    EmplreqComponent,
+    EmppayComponent,
+    NotifypoComponent,
+    EmpfsetComponent
   ],
-  entryComponents:[LogoutdialogComponent],
+  entryComponents:[LogoutdialogComponent,DialogsaleorderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatDatepickerModule,
     MatCardModule,
     BrowserAnimationsModule,
     MatInputModule,
@@ -85,6 +125,7 @@ import {MatSortModule} from '@angular/material/sort';
     FormsModule,
     ReactiveFormsModule,
     LayoutModule,
+    MatNativeDateModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
@@ -95,7 +136,11 @@ import {MatSortModule} from '@angular/material/sort';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatRippleModule,
-    MatSortModule
+    MatSortModule,
+    MatExpansionModule,
+    MatTabsModule,
+    MatGridListModule
+
   ],
   providers: [CusporserviceService,TokenInterService,AuthGuard,{
     provide:HTTP_INTERCEPTORS,

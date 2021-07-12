@@ -1,9 +1,15 @@
 .sidenav-container {
+  background-image:url("E:\kaar internship\portals\customer portal\angular\portal\src\assets\images\industry2.jpg");
+  background-size: 100% ;  
+  background-size:cover;
+  color: white;
   height: 100%;
+ 
 }
 
 .sidenav {
   width:220px;
+  
 }
 
 .sidenav .mat-toolbar {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { RfqdialogComponent } from '../rfqdialog/rfqdialog.component';
 import { VenporserviceService } from '../venporservice.service';
 
 @Component({
@@ -21,13 +23,14 @@ export class VenrfqComponent implements OnInit {
   istoggle1:any=true;
   istoggle2:any=true;
   obser:any;
-  isprogress2:any=false;
+  isprogress1:any=false;
   displayedColumns:any=['DOC_NO','CO_CODE','PUR_ORG','PUR_GRP','CURRENCY','EXCHG_RATE','DOC_DATE','PROCEDURE','CREATED_ON','CREATED_BY'];
   displayedColumns1:any=['DOC_NO','DOC_ITEM','DESCRIPTION','MATERIAL','PUR_MAT','CO_CODE','PLANT','MAT_GRP','QUANTITY','UNIT'];
-  constructor(private ser:VenporserviceService) { }
+  constructor(private ser:VenporserviceService,private dialog:MatDialog) { }
 
   ngOnInit(): void {
-    this.isprogress2=true;
+    this.isprogress1=true;
+    this.isavailable=true;
     this.obser=this.ser.get_venrfq().subscribe(res=>{
       this.data=res;
       if(this.data.HEADER.length===0)
@@ -46,8 +49,10 @@ export class VenrfqComponent implements OnInit {
         this.rfqline=this.data.LINE;
         //this.isavailable1=true;
       }
-      this.isprogress2=false;
-    },err=>{console.log(err);this.isprogress2=false;
+      this.isprogress1=false;
+    },err=>{console.log(err);
+      this.isprogress1=false;
+      this.isavailable=false;
     });
   }
 //   ngOnDestroy(){
@@ -84,5 +89,15 @@ export class VenrfqComponent implements OnInit {
   }
   mouse1(ind:any){
     this.index1=ind;
+  }
+  mouseout(){
+    this.index=-1;
+  }
+  mouseout1(){
+    this.index1=-1;
+  }
+  items(value:any){
+    this.line=this.rfqline.filter((item:any)=>{return item.DOC_NO===value.DOC_NO});
+    this.dialog.open(RfqdialogComponent,{data:this.line});
   }
 }

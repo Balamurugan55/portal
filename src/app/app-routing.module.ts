@@ -13,14 +13,24 @@ import { CusprofileComponent } from './cusprofile/cusprofile.component';
 import { CussaleorderComponent } from './cussaleorder/cussaleorder.component';
 import { CussideNavComponent } from './cusside-nav/cusside-nav.component';
 import { CussignupComponent } from './cussignup/cussignup.component';
+import { EmpdashboardComponent } from './empdashboard/empdashboard.component';
+import { EmpfsetComponent } from './empfset/empfset.component';
+import { EmpguardGuard } from './empguard.guard';
+import { EmpldetComponent } from './empldet/empldet.component';
+import { EmploginComponent } from './emplogin/emplogin.component';
+import { EmplreqComponent } from './emplreq/emplreq.component';
+import { EmppayComponent } from './emppay/emppay.component';
+import { EmpprofComponent } from './empprof/empprof.component';
 import { HomeComponent } from './home/home.component';
 import { InquiryComponent } from './inquiry/inquiry.component';
 import { VenauthGuard } from './venauth.guard';
 import { VencredComponent } from './vencred/vencred.component';
 import { VendashboardComponent } from './vendashboard/vendashboard.component';
 import { VengrComponent } from './vengr/vengr.component';
+import { VeninvComponent } from './veninv/veninv.component';
 import { VenloginComponent } from './venlogin/venlogin.component';
 import { VenpayageComponent } from './venpayage/venpayage.component';
+import { VenpoComponent } from './venpo/venpo.component';
 import { VenprofComponent } from './venprof/venprof.component';
 import { VenrfqComponent } from './venrfq/venrfq.component';
 
@@ -51,6 +61,37 @@ const routes: Routes = [
     component:CusdashboardComponent
   },
   {
+    path:"home/employee",
+    component:EmploginComponent
+  },
+  {
+    path:"home/employee/empdashboard",
+    component:EmpdashboardComponent,
+    canActivate:[EmpguardGuard],
+    children:[
+      {
+        path:"empprof",
+        component:EmpprofComponent
+      },
+      {
+        path:"emppay",
+        component:EmppayComponent
+      },
+      {
+        path:"emplreq",
+        component:EmplreqComponent
+      },
+      {
+        path:"empldet",
+        component:EmpldetComponent
+      },
+      {
+        path:'empfset',
+        component:EmpfsetComponent
+      }
+    ]
+  },
+  {
     path:"home/vendor/vendashboard",
     component:VendashboardComponent,
     canActivate:[VenauthGuard],
@@ -70,6 +111,12 @@ const routes: Routes = [
       },{
         path:"vengr",
         component:VengrComponent
+      },{
+        path:'veninv',
+        component:VeninvComponent
+      },{
+        path:"venpo",
+        component:VenpoComponent
       }
     ]
   },

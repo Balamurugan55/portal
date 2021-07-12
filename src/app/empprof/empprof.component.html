@@ -1,0 +1,75 @@
+<div fxLayoutAlign="center center" fxFlexFill>
+    <mat-card fxFlex="50" class="div1">
+        <mat-toolbar color="accent">Profile<mat-spinner color="primary" diameter="40" *ngIf="isprogress1"></mat-spinner></mat-toolbar>
+        <form fxLayoutAlign="stretch" fxLayout="column" class="div2" #profile="ngForm">
+            <mat-form-field>
+              <input disabled="true" matInput placeholder="Employee id" [(ngModel)]="empid" name="empid" required>
+  
+            </mat-form-field>
+            <mat-form-field>
+                <input [disabled]="!isedit2" matInput placeholder="First name" [(ngModel)]="fname" name="fname" required>
+                <button mat-icon-button matSuffix (click)="edit2()" >
+                    <mat-icon>edit</mat-icon>
+                  </button>
+            </mat-form-field>
+            <mat-form-field>
+            <input [disabled]="!isedit3" matInput placeholder="Last name" [(ngModel)]="lname"  name="lname" required>
+            <button mat-icon-button matSuffix (click)="edit3()" >
+                <mat-icon>edit</mat-icon>
+              </button>
+            </mat-form-field>
+            <mat-form-field>
+                <input [disabled]="!isedit4" matInput placeholder="Contact number" [(ngModel)]="contno" type="number" name="contno" required>
+                <button mat-icon-button matSuffix (click)="edit4()" >
+                    <mat-icon>edit</mat-icon>
+                  </button>
+            </mat-form-field>
+            <mat-form-field>
+              <input [disabled]="!isedit8" matInput placeholder="Email" [(ngModel)]="mailid" type="email" name="mailid" required email>
+              <button mat-icon-button matSuffix (click)="edit8()" >
+                  <mat-icon>edit</mat-icon>
+                </button>
+          </mat-form-field>
+            <mat-form-field>
+              <input [disabled]="!isedit9" matInput placeholder="Street" [(ngModel)]="street"  name="street" required>
+              <button mat-icon-button matSuffix (click)="edit9()" >
+                  <mat-icon>edit</mat-icon>
+                </button>
+          </mat-form-field>
+            <mat-form-field>
+              <input [disabled]="!isedit5" matInput placeholder="City" [(ngModel)]="city"  name="city" required>
+              <button mat-icon-button matSuffix (click)="edit5()" >
+                  <mat-icon>edit</mat-icon>
+                </button>
+          </mat-form-field>
+          <mat-form-field>
+            <input [disabled]="!isedit1" matInput placeholder="District" [(ngModel)]="district"  name="district" required>
+            <button mat-icon-button matSuffix (click)="edit1()" >
+                <mat-icon>edit</mat-icon>
+              </button>
+        </mat-form-field>
+          <mat-form-field>
+            <input [disabled]="!isedit6" matInput placeholder="Country" [(ngModel)]="country"  name="country" required>
+            <button mat-icon-button matSuffix (click)="edit6()" >
+                <mat-icon>edit</mat-icon>
+              </button>
+        </mat-form-field>
+        <mat-form-field>
+          <input [disabled]="!isedit7" matInput placeholder="Pin code" [(ngModel)]="postcode"  name="postcode" required>
+          <button mat-icon-button matSuffix (click)="edit7()" >
+              <mat-icon>edit</mat-icon>
+            </button>
+      </mat-form-field>
+    
+       
+    <p *ngIf="issaved" class="alert alert-success">Saved successfully</p>
+    <p *ngIf="isnotsaved" class="alert alert-danger">Error occurred</p>
+    <mat-spinner class="spin" color="warn" diameter="50" *ngIf="isprogress2"></mat-spinner>
+                
+              <button mat-raised-button color="accent" [disabled]="!profile.valid" class="div3" (click)="onsubmit(profile)">Save</button>
+          
+        </form>
+          
+    </mat-card>
+</div>
+

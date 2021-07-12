@@ -1,0 +1,61 @@
+<h2 mat-dialog-title>RFQ line items of document no {{value[0].DOC_NO}}</h2>
+<mat-dialog-content class="content">
+    <mat-table [dataSource]="value" class="mat-elevation-z8" *ngIf="isavailable">
+  
+        <ng-container matColumnDef="DOC_NO">
+            <mat-header-cell *matHeaderCellDef>Document no</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.DOC_NO}} </mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="DOC_ITEM">
+            <mat-header-cell *matHeaderCellDef> Document item</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.DOC_ITEM}} </mat-cell>
+          </ng-container>
+        
+      
+          <ng-container matColumnDef="DESCRIPTION">
+            <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.DESCRIPTION}} </mat-cell>
+          </ng-container>
+      
+         
+          <ng-container matColumnDef="MATERIAL">
+              <mat-header-cell *matHeaderCellDef>Material</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.MATERIAL}} </mat-cell>
+            </ng-container>
+            
+            <ng-container matColumnDef="PUR_MAT">
+              <mat-header-cell *matHeaderCellDef>Purchase material</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.PUR_MAT}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="CO_CODE">
+                <mat-header-cell *matHeaderCellDef>Company code</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.CO_CODE}}</mat-cell>
+              </ng-container>
+          <ng-container matColumnDef="PLANT">
+            <mat-header-cell *matHeaderCellDef>Plant</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.PLANT}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="QUANTITY">
+            <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.QUANTITY}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="UNIT">
+            <mat-header-cell *matHeaderCellDef>Unit</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.UNIT}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="MAT_GRP">
+            <mat-header-cell *matHeaderCellDef> Material group</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.MAT_GRP}} </mat-cell>
+          </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row;let ind1=index; columns: displayedColumns;" (mouseover)="mouse(ind1)" (mouseout)="mouseout()" [ngClass] = "{'mat-elevation-z24 bold' : ind1 == index}" style="background: none;"></mat-row>
+      </mat-table>
+      <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-flat-button color="warn" mat-dialog-close class="close">Close</button>
+</mat-dialog-actions>
+
+
+

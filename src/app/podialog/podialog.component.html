@@ -1,0 +1,59 @@
+<h2 mat-dialog-title>PO line items of PO no {{value[0].col1}}</h2>
+<mat-dialog-content class="content">
+    <mat-table [dataSource]="value" class="mat-elevation-z8" *ngIf="isavailable">
+  
+        <ng-container matColumnDef="col1">
+            <mat-header-cell *matHeaderCellDef>Purchase order no</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.col1}} </mat-cell>
+          </ng-container>
+        
+      
+          <ng-container matColumnDef="col2">
+            <mat-header-cell *matHeaderCellDef> Company code</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.col2}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="col3">
+            <mat-header-cell *matHeaderCellDef>PO item</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.col3}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="col4">
+            <mat-header-cell *matHeaderCellDef>Purchase material</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.col4}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="col5">
+            <mat-header-cell *matHeaderCellDef>Material no</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.col5}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="col6">
+            <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.col6}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="col7">
+            <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.col5}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="col8">
+            <mat-header-cell *matHeaderCellDef>Net price</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.col8}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="col9">
+            <mat-header-cell *matHeaderCellDef>Gross value</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.col9}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="col10">
+              <mat-header-cell *matHeaderCellDef>Changed on</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.col10}} </mat-cell>
+            </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row;let ind1=index; columns: displayedColumns;" (mouseover)="mouse(ind1)" (mouseout)="mouseout()" [ngClass] = "{'mat-elevation-z24 bold' : ind1 == index}" style="background: none;"></mat-row>
+      </mat-table>
+      <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-flat-button color="warn" mat-dialog-close class="close">Close</button>
+</mat-dialog-actions>
+
+
+
+

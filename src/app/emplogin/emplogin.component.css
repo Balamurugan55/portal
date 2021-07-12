@@ -1,0 +1,17 @@
+.div1{
+    padding: 0px;
+}
+.div2{
+    padding: 20px;
+}
+.div3{
+    margin-right: auto;
+}
+.div4{
+    background-image:url("E:\kaar internship\portals\customer portal\angular\portal\src\assets\images\sap3.jpg");
+    background-size: 100% ;  
+    background-size:cover;
+}
+.spin{
+    margin: auto;
+}

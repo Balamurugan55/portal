@@ -1,0 +1,41 @@
+mat-card{
+    padding: 25px;
+     width: 80%;
+ }
+ p{
+     margin-left: 50%;
+ }
+ .align{
+    margin:auto;
+}
+#abc{
+    font-size: x-large;
+}
+.spin2{
+    margin:auto;
+}
+.class1{
+    margin-left: 40%;
+  }
+  .class2{
+      margin-left: 30%;
+    }
+    .class3{
+      margin-left: 24.5%;
+    }
+    .mat-drawer {
+        overflow-y: scroll;
+    }
+    .div4{
+        background-image:url("E:\kaar internship\portals\customer portal\angular\portal\src\assets\images\industry3.jpg");
+        background-size: 100% ;  
+        background-size:cover;
+    }
+    .mat-tab-label{
+        color:black;
+        background-color:white;
+    }
+    .mat-toolbar{
+        font-size: x-large;
+        margin:auto;
+    }

@@ -4,6 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { CusporserviceService } from '../cusporservice.service';
+import { EmpporserviceService } from '../empporservice.service';
+import { TokenInterService } from '../token-inter.service';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -28,20 +30,24 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './cusdashboard.component.html',
   styleUrls: ['./cusdashboard.component.css']
 })
-export class CusdashboardComponent implements OnInit,AfterViewInit {
-  events:any;
-  constructor(private serv:CusporserviceService,private router:Router) { }
+export class CusdashboardComponent implements OnInit {
+  isavailable1:any=false;
+  isprogress1:any=false;
+  data:any;
+  size=['40%','32%','26%'];
+  constructor(private ser:EmpporserviceService) { }
 
   ngOnInit(): void {
-      
-  }
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  @ViewChild(MatSort)
-  sort: MatSort = new MatSort;
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    console.log(this.dataSource);
+    TokenInterService.stype='E';
+    this.ser.body.empid='5016';
+    this.isprogress1=true;
+    this.isavailable1=true;
+    this.ser.get_empfset().subscribe(res=>{
+      this.data=res;
+      if(this.data.TYPE=='E'){
+        this.isavailable1=false;
+      }
+      this.isprogress1=false;
+    },er=>{console.log(er);this.isprogress1=false;});
   }
 }

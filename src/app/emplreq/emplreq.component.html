@@ -1,0 +1,50 @@
+<div fxLayoutAlign="center center" fxFlexFill>
+    <mat-card fxFlex="50" class="div1">
+        <mat-toolbar color="accent">Leave request<mat-spinner color="primary" diameter="40" *ngIf="isprogress1"></mat-spinner></mat-toolbar>
+        <form fxLayoutAlign="stretch" fxLayout="column" class="div2" #ldet="ngForm">
+            <mat-form-field>
+              <input disabled="true" matInput placeholder="Employee id" [(ngModel)]="empid" name="empid" required>
+  
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Leave type</mat-label>
+                <mat-select [(value)]="selected">
+                  <mat-option *ngFor="let type of ltype" [value]="type.id">
+                    {{type.description}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Start date</mat-label>
+                <input matInput [matDatepicker]="sdate"(dateInput)="setsdate($event)">
+                <mat-datepicker-toggle matSuffix [for]="sdate"></mat-datepicker-toggle>
+                <mat-datepicker #sdate></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>End date</mat-label>
+                <input matInput [matDatepicker]="edate" (dateInput)="setedate($event)">
+                <mat-datepicker-toggle matSuffix [for]="edate"></mat-datepicker-toggle>
+                <mat-datepicker #edate></mat-datepicker>
+              </mat-form-field>
+            <mat-form-field>
+            <input  matInput placeholder="Start time" [(ngModel)]="stime" name="stime" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input  matInput placeholder="End time" [(ngModel)]="etime" name="etime" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input  matInput placeholder="Absence hours" [(ngModel)]="ahours" name="ahours" required>
+            </mat-form-field>
+       
+    <p *ngIf="iscreated" class="alert alert-success">Created successfully</p>
+    <p *ngIf="isnotcreated" class="alert alert-danger">{{emessage}}</p>
+    <mat-spinner class="spin" color="warn" diameter="50" *ngIf="isprogress2"></mat-spinner>
+                
+              <button mat-raised-button color="accent" [disabled]="!ldet.valid" class="div3" (click)="onsubmit(ldet)">create</button>
+          
+        </form>
+          
+    </mat-card>
+</div>
+
+

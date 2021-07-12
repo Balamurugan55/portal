@@ -1,0 +1,56 @@
+<h2 mat-dialog-title>Sales orders line items of document no {{value[0].SD_DOC}}</h2>
+<mat-dialog-content class="content">
+    <mat-table [dataSource]="value" class="mat-elevation-z8" *ngIf="isavailable">
+  
+        <ng-container matColumnDef="SD_DOC">
+          <mat-header-cell *matHeaderCellDef>SD doc</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.SD_DOC}} </mat-cell>
+        </ng-container>
+      
+    
+        <ng-container matColumnDef="ITM_NUMBER">
+          <mat-header-cell *matHeaderCellDef> Item no</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.ITM_NUMBER}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="MATERIAL">
+          <mat-header-cell *matHeaderCellDef> Material</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.MATERIAL}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="SHORT_TEXT">
+          <mat-header-cell *matHeaderCellDef> Description</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.SHORT_TEXT}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="DLV_QTY">
+          <mat-header-cell *matHeaderCellDef>Sales unit</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.DLV_QTY}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="SALES_UNIT">
+          <mat-header-cell *matHeaderCellDef>Sales unit</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.SALES_UNIT}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="NET_VAL">
+          <mat-header-cell *matHeaderCellDef> Net value</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.NET_VAL}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="DOC_STATUS">
+          <mat-header-cell *matHeaderCellDef> Document status</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.DOC_STATUS}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="CREATION_DATE">
+          <mat-header-cell *matHeaderCellDef>Creation date</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.CREATION_DATE}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="CREATION_TIME">
+          <mat-header-cell *matHeaderCellDef>Creation time</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.CREATION_TIME}} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row;let ind1=index; columns: displayedColumns;" (mouseover)="mouse(ind1)" (mouseout)="mouseout()" [ngClass] = "{'mat-elevation-z24 bold' : ind1 == index}" style="background: none;"></mat-row>
+      </mat-table>
+      <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-flat-button color="warn" mat-dialog-close class="close">Close</button>
+</mat-dialog-actions>
+

@@ -1,25 +1,6 @@
 <mat-toolbar color="accent" ><p class="align" id="abc">Delivery data</p></mat-toolbar>
-<mat-button-toggle-group [(ngModel)]="toggle" style="margin-left:45%; font-weight:bold" (click)="dotoggle()">
-  <mat-button-toggle value="header">Header</mat-button-toggle>
-  <mat-button-toggle value="line">Line</mat-button-toggle>
-  <mat-button-toggle value="both">Both</mat-button-toggle>
-</mat-button-toggle-group>
-
-<h4 style="font-weight:bold">Sales document number</h4>
-<div fxLayout="row">
-<mat-form-field appearance="fill">
-  <mat-label>Sales document number</mat-label>
-  <mat-select [(value)]="selected">
-    <mat-option *ngFor="let sale of deliveryline" [value]="sale.VBELN" (click)="get_deliveries()">
-      {{sale.VBELN}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<mat-spinner class="spin1" color="accent" diameter="40" *ngIf="isprogress1"></mat-spinner>
-</div>
-<div *ngIf="istoggle1">
 <h2 style="font-weight:bold">Delivery header items</h2>
-<mat-table [dataSource]="header" class="mat-elevation-z8" *ngIf="isavailable">
+<mat-table [dataSource]="deliveryheader" class="mat-elevation-z8" *ngIf="isavailable && !isprogress1">
     <ng-container matColumnDef="VBELN">
       <mat-header-cell *matHeaderCellDef> Sales doc </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.VBELN}} </mat-cell>
@@ -67,62 +48,7 @@
     </ng-container>
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row;let ind=index; columns: displayedColumns;" (mouseover)="mouse(ind)" [ngClass] = "{'mat-elevation-z24 bold' : ind == index}" style="background: none;"></mat-row>
+    <mat-row *matRowDef="let row;let ind=index; columns: displayedColumns;" (mouseover)="mouse(ind)" (click)="items(row)" (mouseout)="mouseout()" [ngClass] = "{'mat-elevation-z24 bold' : ind == index}" style="background: none;"></mat-row>
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
-  </div>
-  <div *ngIf="istoggle2">
-  <h2 style="font-weight:bold">Delivery line items</h2>
-  <mat-table [dataSource]="line" class="mat-elevation-z8" *ngIf="isavailable1">
-    <ng-container matColumnDef="VBELN">
-      <mat-header-cell *matHeaderCellDef> Sales doc</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.VBELN}} </mat-cell>
-    </ng-container>
-  
-    <ng-container matColumnDef="MATNR">
-      <mat-header-cell *matHeaderCellDef> Material no</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.MATNR}} </mat-cell>
-    </ng-container>
-  
-
-    <ng-container matColumnDef="MATWA">
-      <mat-header-cell *matHeaderCellDef> Material entered</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.MATWA}} </mat-cell>
-    </ng-container>
-
-   
-    <ng-container matColumnDef="ARKTX">
-        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.ARKTX}} </mat-cell>
-      </ng-container>
-      
-      <ng-container matColumnDef="NTGEW">
-        <mat-header-cell *matHeaderCellDef> Net weight</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.NTGEW}} </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="GEWEI">
-          <mat-header-cell *matHeaderCellDef> Weight unit</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.GEWEI}}</mat-cell>
-        </ng-container>
-    <ng-container matColumnDef="MBDAT">
-      <mat-header-cell *matHeaderCellDef>Material availability date</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.MBDAT}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="LGMNG">
-      <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.LGMNG}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="ERDAT">
-      <mat-header-cell *matHeaderCellDef>Created date</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.ERDAT}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="ERNAM">
-      <mat-header-cell *matHeaderCellDef> Created by</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.ERNAM}} </mat-cell>
-    </ng-container>
-  
-    <mat-header-row *matHeaderRowDef="displayedColumns1"></mat-header-row>
-    <mat-row *matRowDef="let row;let ind1=index; columns: displayedColumns1;" (mouseover)="mouse1(ind1)" [ngClass] = "{'mat-elevation-z24 bold' : ind1 == index1}" style="background: none;"></mat-row>
-  </mat-table>
-  <h4 class="alert alert-info" *ngIf="!isavailable1"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
-  </div>
+  <mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress1"></mat-spinner>

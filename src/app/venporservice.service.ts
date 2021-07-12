@@ -73,4 +73,22 @@ export class VenporserviceService {
       headers:new HttpHeaders().append('Content-Type', 'application/json')
     });
   }
+  get_veninv(body:any){
+    return this.http.post(this.url+'/veninv',body,{
+      observe:'body',
+      headers:new HttpHeaders().append('Content-Type', 'application/json')
+    });
+  }
+  get_veninvhead(){
+    return this.http.post(this.url+'/veninvdis',this.body,{
+      observe:'body',
+      headers:new HttpHeaders().append('Content-Type', 'application/json')
+    });
+  }
+  get_venpo(){
+    return this.http.post(this.url+'/venpo',this.body,{
+      observe:'body',
+      headers:new HttpHeaders().append('Content-Type', 'application/json')
+    });
+  }
 }

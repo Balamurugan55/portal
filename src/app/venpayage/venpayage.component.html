@@ -47,7 +47,7 @@
       </ng-container>
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row;let ind=index; columns: displayedColumns;" (mouseover)="mouse(ind)" [ngClass] = "{'mat-elevation-z24 bold' : ind == index}" style="background: none;"></mat-row>
+    <mat-row *matRowDef="let row;let ind=index; columns: displayedColumns;" (mouseover)="mouse(ind)" (mouseout)="mouseout()" [ngClass] = "{'mat-elevation-z24 bold' : ind == index}" style="background: none;"></mat-row>
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
   <mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress2"></mat-spinner>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 //import { element } from 'protractor';
 import { CusporserviceService } from '../cusporservice.service';
+import { DelidialogComponent } from '../delidialog/delidialog.component';
+import { LogoutdialogComponent } from '../logoutdialog/logoutdialog.component';
 
 @Component({
   selector: 'app-cusdelivery',
@@ -26,7 +29,7 @@ export class CusdeliveryComponent implements OnInit {
   isprogress1:any=false;
   displayedColumns:any=['VBELN','VSTEL','WADAT','INCO2','NTGEW','GEWEI','LFART','ERDAT','ERNAM','VKORG'];
   displayedColumns1:any=['VBELN','MATNR','MATWA','ARKTX','NTGEW','GEWEI','MBDAT','LGMNG','ERDAT','ERNAM'];
-  constructor(private ser:CusporserviceService) { }
+  constructor(private ser:CusporserviceService,private dialog:MatDialog) { }
 
   ngOnInit(): void {
     // this.ser.body1.doctype='J';
@@ -36,6 +39,7 @@ export class CusdeliveryComponent implements OnInit {
     //   console.log(this.salesdoc);
     // },err =>{console.log(err)});
     this.isprogress1=true;
+    this.isavailable=true;
     this.obser=this.ser.get_cusdeli().subscribe(res=>{
       this.data=res;
       if(this.data.HEADER.length===0)
@@ -44,7 +48,7 @@ export class CusdeliveryComponent implements OnInit {
       }
       else{
         this.deliveryheader=this.data.HEADER;
-        //this.isavailable=true;
+        this.isavailable=true;
       }
       if(this.data.LINE.length===0)
       {
@@ -55,7 +59,7 @@ export class CusdeliveryComponent implements OnInit {
         //this.isavailable1=true;
       }
       this.isprogress1=false;
-    },err=>{console.log(err);this.isprogress1=false;});
+    },err=>{console.log(err);this.isprogress1=false;this.isavailable=false;});
   }
 //   ngOnDestroy(){
 //     this.obser.unsubscribe();
@@ -92,6 +96,15 @@ export class CusdeliveryComponent implements OnInit {
   mouse1(ind:any){
     this.index1=ind;
   }
-
+  mouseout(){
+    this.index=-1;
+  }
+  mouseout1(){
+    this.index1=-1;
+  }
+  items(value:any){
+    this.line=this.deliveryline.filter((item:any)=>{return item.VBELN===value.VBELN});
+    this.dialog.open(DelidialogComponent,{data:this.line});
+  }
 
 }

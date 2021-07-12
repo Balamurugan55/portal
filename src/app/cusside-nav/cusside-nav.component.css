@@ -1,4 +1,7 @@
 .sidenav-container {
+  background-image:url("E:\kaar internship\portals\customer portal\angular\portal\src\assets\images\industry1.jpg");
+  background-size: 100% ;  
+  background-size:cover;
   height: 100%;
 }
 

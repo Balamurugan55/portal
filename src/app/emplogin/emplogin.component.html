@@ -1,0 +1,64 @@
+<div fxLayoutAlign="center center" fxFlexFill class="div4">
+    <mat-card fxFlex="25" class="div1">
+        <mat-toolbar color="primary">Login page</mat-toolbar>
+        <form fxLayoutAlign="stretch" fxLayout="column" class="div2" #loginform="ngForm" (ngSubmit)="onsubmit(loginform)">
+            <mat-form-field>
+              <input matInput placeholder="Employee-id" ngModel name="empid" required>
+                </mat-form-field>
+                <mat-form-field>
+                <input matInput placeholder="Password" #pass="ngModel" ngModel [type]="hide ? 'password' : 'text'" name="password" type="password" required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" >
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+              </mat-form-field>
+              <p *ngIf="!validity(loginform) && pass.touched" class="alert alert-warning">Enter the valid password</p>
+              <p *ngIf="!signin && loginform.submitted" class="alert alert-danger">User credentials are wrong</p>
+              <mat-spinner class="spin" diameter="50" *ngIf="isprogress" color="warn"></mat-spinner>
+              <div fxLayout="row">
+                <button [disabled]="!loginform.valid || !validity(loginform)" mat-raised-button color="primary" type="submit" (click)="check()" class="div3">Sign in</button>
+              <button mat-raised-button color="accent" (click)="home()">Home</button>
+              </div>
+          
+        </form>
+          
+    </mat-card>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+    <table class="mx-auto h-100">
+        <tr>
+            <td>Customer-id</td>
+            <td>
+                <input type="text" value="Bala" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td>
+                <input type="password">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit"value="Login" class="mx-auto">            
+            </td>
+        </tr>
+    </table>
+</div> -->
+
+
+

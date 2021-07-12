@@ -37,6 +37,9 @@ export class VenpayageComponent implements OnInit,AfterViewInit{
   mouse(ind:any){
     this.index=ind;
   }
+  mouseout(){
+    this.index=-1;
+  }
   
 
   ngAfterViewInit() {

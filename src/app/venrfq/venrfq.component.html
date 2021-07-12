@@ -1,24 +1,7 @@
 <mat-toolbar color="accent" ><p class="align" id="abc">Request for quotation</p></mat-toolbar>
-<mat-button-toggle-group [(ngModel)]="toggle" style="margin-left:45%; font-weight:bold" (click)="dotoggle()">
-  <mat-button-toggle value="header">Header</mat-button-toggle>
-  <mat-button-toggle value="line">Line</mat-button-toggle>
-  <mat-button-toggle value="both">Both</mat-button-toggle>
-</mat-button-toggle-group>
-<h4 style="font-weight:bold">Document number</h4>
-<div fxLayout="row">
-    <mat-form-field appearance="fill">
-      <mat-label>Document number</mat-label>
-      <mat-select [(value)]="selected">
-        <mat-option *ngFor="let item of rfqline" [value]="item.DOC_NO" (click)="get_rfq()">
-          {{item.DOC_NO}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-spinner class="spin1" color="accent" diameter="40" *ngIf="isprogress2"></mat-spinner>
-    </div>
 <div *ngIf="istoggle1">
 <h2 style="font-weight:bold">RFQ header items</h2>
-<mat-table [dataSource]="header" class="mat-elevation-z8" *ngIf="isavailable">
+<mat-table [dataSource]="rfqheader" class="mat-elevation-z8" *ngIf="isavailable && !isprogress1">
     <ng-container matColumnDef="CO_CODE">
         <mat-header-cell *matHeaderCellDef>Company code</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.CO_CODE}} </mat-cell>
@@ -64,64 +47,10 @@
         </ng-container>
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row;let ind=index; columns: displayedColumns;" (mouseover)="mouse(ind)" [ngClass] = "{'mat-elevation-z24 bold' : ind == index}" style="background: none;"></mat-row>
+    <mat-row *matRowDef="let row;let ind=index; columns: displayedColumns;" (mouseover)="mouse(ind)" (click)="items(row)" (mouseout)="mouseout()" [ngClass] = "{'mat-elevation-z24 bold' : ind == index}" style="background: none;"></mat-row>
   </mat-table>
   <h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
-  </div>
-  <div *ngIf="istoggle2">
-  <h2 style="font-weight:bold">RFQ line items</h2>
-  <mat-table [dataSource]="line" class="mat-elevation-z8" *ngIf="isavailable1">
-    <ng-container matColumnDef="DOC_NO">
-      <mat-header-cell *matHeaderCellDef>Document no</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.DOC_NO}} </mat-cell>
-    </ng-container>
-  
-    <ng-container matColumnDef="DOC_ITEM">
-      <mat-header-cell *matHeaderCellDef> Document item</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.DOC_ITEM}} </mat-cell>
-    </ng-container>
-  
-
-    <ng-container matColumnDef="DESCRIPTION">
-      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.DESCRIPTION}} </mat-cell>
-    </ng-container>
-
-   
-    <ng-container matColumnDef="MATERIAL">
-        <mat-header-cell *matHeaderCellDef>Material</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.MATERIAL}} </mat-cell>
-      </ng-container>
-      
-      <ng-container matColumnDef="PUR_MAT">
-        <mat-header-cell *matHeaderCellDef>Purchase material</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.PUR_MAT}} </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="CO_CODE">
-          <mat-header-cell *matHeaderCellDef>Company code</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.CO_CODE}}</mat-cell>
-        </ng-container>
-    <ng-container matColumnDef="PLANT">
-      <mat-header-cell *matHeaderCellDef>Plant</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.PLANT}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="QUANTITY">
-      <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.QUANTITY}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="UNIT">
-      <mat-header-cell *matHeaderCellDef>Unit</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.UNIT}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="MAT_GRP">
-      <mat-header-cell *matHeaderCellDef> Material group</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.MAT_GRP}} </mat-cell>
-    </ng-container>
-  
-    <mat-header-row *matHeaderRowDef="displayedColumns1"></mat-header-row>
-    <mat-row *matRowDef="let row;let ind1=index; columns: displayedColumns1;" (mouseover)="mouse1(ind1)" [ngClass] = "{'mat-elevation-z24 bold' : ind1 == index1}" style="background: none;"></mat-row>
-  </mat-table>
-  <h4 class="alert alert-info" *ngIf="!isavailable1"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+  <mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress1"></mat-spinner>
   </div>
 
 

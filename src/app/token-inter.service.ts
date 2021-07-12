@@ -19,6 +19,9 @@ export class TokenInterService implements HttpInterceptor {
     else if(TokenInterService.stype === 'V'){
       this.tokreq=req.clone({setHeaders: {Authorization: `Bearer ${localStorage.getItem('ventoken')}`}});
     }
+    else if(TokenInterService.stype === 'E'){
+      this.tokreq=req.clone({setHeaders: {Authorization: `Bearer ${localStorage.getItem('emptoken')}`}});
+    }
      return next.handle(this.tokreq);
   }
 }

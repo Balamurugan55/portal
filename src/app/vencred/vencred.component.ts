@@ -76,4 +76,10 @@ export class VencredComponent implements OnInit {
   mouse1(ind:any){
     this.index1=ind;
   }
+  mouseout(){
+    this.index=-1;
+  }
+  mouseout1(){
+    this.index1=-1;
+  }
 }

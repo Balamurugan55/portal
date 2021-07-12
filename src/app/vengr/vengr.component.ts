@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { GrdialogComponent } from '../grdialog/grdialog.component';
 import { VenporserviceService } from '../venporservice.service';
 
 @Component({
@@ -25,10 +27,11 @@ export class VengrComponent implements OnInit {
   isprogress2:any=false;
   displayedColumns:any=['DOC_NO','DOC_YEAR','DOC_DATE','PSTNG_DATE','ENTRY_DATE','USERNAME','TR_EV_TYPE','VERSION','REF_NO','REF'];
   displayedColumns1:any=['DOC_NO','DOC_ITEM','DESCRIPTION','MATERIAL','PUR_MAT','CO_CODE','PLANT','MAT_GRP','QUANTITY','UNIT'];
-  constructor(private ser:VenporserviceService) { }
+  constructor(private ser:VenporserviceService,private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.isprogress2=true;
+    this.isavailable=true;
     this.obser=this.ser.get_vengr().subscribe(res=>{
       this.data=res;
       if(this.data.HEADER.length===0)
@@ -37,7 +40,7 @@ export class VengrComponent implements OnInit {
       }
       else{
         this.grheader=this.data.HEADER;
-        //this.isavailable=true;
+        this.isavailable=true;
       }
       if(this.data.LINE.length===0)
       {
@@ -45,10 +48,12 @@ export class VengrComponent implements OnInit {
       }
       else{
         this.grline=this.data.LINE;
-        //this.isavailable1=true;
+        this.isavailable1=true;
       }
       this.isprogress2=false;
-    },err=>{console.log(err);this.isprogress2=false;
+    },err=>{console.log(err);
+      this.isprogress2=false;
+      this.isavailable=false;
     });
   }
 //   ngOnDestroy(){
@@ -85,5 +90,15 @@ export class VengrComponent implements OnInit {
   }
   mouse1(ind:any){
     this.index1=ind;
+  }
+  mouseout(){
+    this.index=-1;
+  }
+  mouseout1(){
+    this.index1=-1;
+  }
+  items(value:any){
+    this.line=this.grline.filter((item:any)=>{return item.DOC_NO===value.DOC_NO});
+    this.dialog.open(GrdialogComponent,{data:this.line});
   }
 }

@@ -1,0 +1,58 @@
+<mat-toolbar color="accent" ><p class="align" id="abc">Purchase orders</p></mat-toolbar>
+<div *ngIf="istoggle1">
+<h2 style="font-weight:bold">PO header items</h2>
+<mat-table [dataSource]="poheader" class="mat-elevation-z8" *ngIf="isavailable && !isprogress2">
+  <ng-container matColumnDef="col1">
+      <mat-header-cell *matHeaderCellDef>Purchase order no</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col1}} </mat-cell>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="col2">
+      <mat-header-cell *matHeaderCellDef> Company code</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col2}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="col3">
+      <mat-header-cell *matHeaderCellDef>Last item</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col3}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="col4">
+      <mat-header-cell *matHeaderCellDef>Exchange rate</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col4}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="col5">
+      <mat-header-cell *matHeaderCellDef>Document date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col5}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="col6">
+      <mat-header-cell *matHeaderCellDef>Purchase org</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col6}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="col7">
+      <mat-header-cell *matHeaderCellDef>Purchase group</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col7}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="col8">
+      <mat-header-cell *matHeaderCellDef>Currency</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col8}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="col9">
+      <mat-header-cell *matHeaderCellDef>Created on</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.col9}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="col10">
+        <mat-header-cell *matHeaderCellDef>Created by</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.col10}} </mat-cell>
+      </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row;let ind=index; columns: displayedColumns;" (mouseover)="mouse(ind)" (click)="items(row)" (mouseout)="mouseout()" [ngClass] = "{'mat-elevation-z24 bold' : ind == index}" style="background: none;"></mat-row>
+</mat-table>
+<h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+<mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress2"></mat-spinner>
+  </div>
+
+
+
+

@@ -53,8 +53,7 @@ export class CusporserviceService {
   }
   get_inqdata()
   {
-    console.log(JSON.stringify(this.body2));
-    return this.http.post(this.url+'/inqdata',JSON.stringify(this.body2),{
+    return this.http.post(this.url+'/inqdata',this.body,{
       observe:'body',
         headers:new HttpHeaders().append('Content-Type', 'application/json')
     });

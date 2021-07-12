@@ -1,0 +1,35 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false" class="div1">
+    <mat-toolbar color="primary"><p class="align">Menu</p></mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item matRipple matRippleColor="rgba(0,255,0,.2)" routerLink="empprof"><mat-icon>person</mat-icon>Profile</a>
+      <a mat-list-item matRipple matRippleColor="rgba(0,255,0,.2)" (click)="display1()"><mat-icon >{{isdisplay1 ? 'expand_more' : 'chevron_right'}}</mat-icon>Leave</a>
+      <a mat-list-item matRipple matRippleColor="rgba(0,255,0,.2)" *ngIf="isdisplay1" routerLink="emplreq" class="item"><mat-icon class="icon">lens</mat-icon>Leave request</a>
+      <a mat-list-item matRipple matRippleColor="rgba(0,255,0,.2)" *ngIf="isdisplay1" routerLink="empldet" class="item"><mat-icon class="icon">lens</mat-icon>Leave details</a>
+      <a mat-list-item matRipple matRippleColor="rgba(0,255,0,.2)" (click)="display2()"><mat-icon >{{isdisplay2 ? 'expand_more' : 'chevron_right'}}</mat-icon>Payment</a>
+      <a mat-list-item matRipple matRippleColor="rgba(0,255,0,.2)" *ngIf="isdisplay2" routerLink="emppay" class="item"><mat-icon class="icon">lens</mat-icon>Pay slip</a>
+      <a mat-list-item matRipple matRippleColor="rgba(0,255,0,.2)" *ngIf="isdisplay2" routerLink="empfset" class="item"><mat-icon class="icon">lens</mat-icon>Final settlement</a>
+      <a mat-list-item matRipple matRippleColor="rgba(0,255,0,.2)" (click)="home()"><mat-icon>home</mat-icon>Home</a>
+      <a mat-list-item matRipple matRippleColor="rgba(0,255,0,.2)" (click)="logout()"><mat-icon>logout</mat-icon>Log out</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+     <p class="align" id="abc">Employee portal</p>
+     <mat-icon>account_circle</mat-icon>
+     <p class="div2">{{empname}}</p>
+    </mat-toolbar>
+   <router-outlet class="div4"></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
