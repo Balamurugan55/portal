@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogemppayComponent } from '../dialogemppay/dialogemppay.component';
 import { EmpporserviceService } from '../empporservice.service';
 
 @Component({
@@ -87,6 +88,9 @@ export class EmppayComponent implements OnInit {
     items(value:any){
       this.payslip=this.paypdf[value];
       this.isavailable1=true;
+    }
+    dialogpay(value:any){
+      this.dialog.open(DialogemppayComponent,{data:this.paypdf[value]});
     }
   }
   

@@ -12,6 +12,7 @@ export class EmpporserviceService {
   body={empid:'10067'};
   static token:any;
   static empname=new BehaviorSubject('dummy');
+  static istouched:any=false;
   empnameob$=EmpporserviceService.empname.asObservable();
   get_empauth(body:any)
   {

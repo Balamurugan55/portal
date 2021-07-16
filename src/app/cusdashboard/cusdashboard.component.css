@@ -11,3 +11,54 @@ mat-card{
   .class3{
     margin-left: 26%;
   }
+  .sidenav-container {
+    background-image:url("E:\kaar internship\portals\customer portal\angular\portal\src\assets\images\industry3.jpg");
+    background-size: 100% ;  
+    background-size:cover;
+    color: white;
+    height:90%;
+  }
+  
+  .sidenav {
+    width: 200px;
+  }
+  
+  .sidenav .mat-toolbar {
+    background: inherit;
+  }
+  
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .abc{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .div1{
+    width: 220px;
+  }
+  .icon{
+    font-size: small;
+    margin-top: 10px;
+  }
+  .item{
+    margin-left: 30px;
+  }
+  .align{
+    margin: auto;
+  }
+  #abc{
+    font-size: xx-large;
+  }
+  .div2{
+    font-size: medium;
+    margin-top:auto;
+    margin-bottom: auto;
+  }
+  .div4{
+    background-image:url("E:\kaar internship\portals\customer portal\angular\portal\src\assets\images\industry3.jpg");
+    background-size: 100% ;  
+    background-size:cover;
+  }

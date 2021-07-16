@@ -1,10 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { CusporserviceService } from '../cusporservice.service';
 import { EmpporserviceService } from '../empporservice.service';
+import { LogoutdialogComponent } from '../logoutdialog/logoutdialog.component';
 import { TokenInterService } from '../token-inter.service';
 export interface PeriodicElement {
   name: string;
@@ -31,23 +33,67 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./cusdashboard.component.css']
 })
 export class CusdashboardComponent implements OnInit {
-  isavailable1:any=false;
-  isprogress1:any=false;
-  data:any;
-  size=['40%','32%','26%'];
-  constructor(private ser:EmpporserviceService) { }
-
+  isdisplay1:any=false;
+  isdisplay2:any=false;
+    events:any;
+    empname:any;
+    element:any;
+    
+  constructor(private router:Router,private serv:EmpporserviceService,private dialog:MatDialog) {}
   ngOnInit(): void {
+    this.serv.empnameob$.subscribe(res=>{
+      this.empname=res;
+     
+  });
+  this.chatbot();
     TokenInterService.stype='E';
-    this.ser.body.empid='5016';
-    this.isprogress1=true;
-    this.isavailable1=true;
-    this.ser.get_empfset().subscribe(res=>{
-      this.data=res;
-      if(this.data.TYPE=='E'){
-        this.isavailable1=false;
+    // this.serv.getspecial().subscribe(
+    //   (res)=>{ this.events = res},
+    //   err=>{ 
+    //     if(err instanceof HttpErrorResponse)
+    //     {
+    //       if(err.status === 401 || err.status === 500)
+    //       {
+    //         this.router.navigate(['home/employee/']);
+    //       }
+    //     }
+    //   }
+    // );
+}
+
+
+logout()
+{
+  this.dialog.open(LogoutdialogComponent).afterClosed().subscribe(res=>{
+    console.log(res);
+    if(res==='true'){
+      this.serv.logout();
+    }
+  });
+ 
+}
+chatbot(){
+  this.element = document . createElement ( 'script' ); 
+this.element . setAttribute ( 'src' , 'https://cdn.cai.tools.sap/webchat/webchat.js' );
+this.element . setAttribute ( 'channelId' , 'f3bc77e5-b460-42d5-b8a4-cd686e8d66cf' );
+this.element . setAttribute ( 'token' , '59b6373fbc3bb3a242ccf6284234ac2c' );
+this.element . setAttribute ( 'id' , 'cai-webchat' ); 
+document .body.appendChild ( this.element );
+}
+  display1(){
+    this.isdisplay1=!this.isdisplay1;
+  }
+  display2(){
+    this.isdisplay2=!this.isdisplay2;
+  }
+  home(){
+    this.dialog.open(LogoutdialogComponent).afterClosed().subscribe(res=>{
+      console.log(res);
+      if(res==='true'){
+        this.serv.logout();
+        this.router.navigate(['home']);
       }
-      this.isprogress1=false;
-    },er=>{console.log(er);this.isprogress1=false;});
+    });
+    
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EmpporserviceService } from '../empporservice.service';
@@ -9,7 +9,7 @@ import { TokenInterService } from '../token-inter.service';
   templateUrl: './emplogin.component.html',
   styleUrls: ['./emplogin.component.css']
 })
-export class EmploginComponent implements OnInit,OnDestroy {
+export class EmploginComponent implements OnInit {
   hide:any = true;
   signin:any=true;
   body:any;
@@ -23,15 +23,15 @@ export class EmploginComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     console.log(EmpporserviceService.token);
       TokenInterService.stype='E';
-    this.chatbot();
+    if(EmpporserviceService.istouched){
+      location.reload();
+      EmpporserviceService.istouched=false;
+    }
   }
 //   ngOnDestroy(){
 //     this.obser.unsubscribe();
 // }
-  ngOnDestroy(){
-    this.myobj=document.getElementById("cai-webchat");
-    this.myobj.remove();
- }
+  
   onsubmit(loginform:NgForm)
   {
     this.isprogress=true;
@@ -72,14 +72,6 @@ export class EmploginComponent implements OnInit,OnDestroy {
         return true;
     }
     return false;
-  }
-  chatbot(){
-    this.element = document . createElement ( 'script' ); 
-  this.element . setAttribute ( 'src' , 'https://cdn.cai.tools.sap/webchat/webchat.js' );
-  this.element . setAttribute ( 'channelId' , 'f3bc77e5-b460-42d5-b8a4-cd686e8d66cf' );
-  this.element . setAttribute ( 'token' , '59b6373fbc3bb3a242ccf6284234ac2c' );
-  this.element . setAttribute ( 'id' , 'cai-webchat' ); 
-  document .body.appendChild ( this.element );
   }
   check():any{
     

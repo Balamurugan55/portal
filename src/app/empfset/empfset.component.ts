@@ -21,7 +21,7 @@ export class EmpfsetComponent implements OnInit {
         this.isavailable1=false;
       }
       this.isprogress1=false;
-    },er=>{console.log(er);this.isprogress1=false;});
+    },er=>{console.log(er);this.isprogress1=false;this.isavailable1=false;});
   }
 
 }

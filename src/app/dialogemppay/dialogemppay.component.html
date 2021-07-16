@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Payslip pdf</h2>
+<mat-dialog-content class="content">
+    
+<iframe *ngIf="isavailable" [src]="value | safe" type="application/pdf" class="iframe"></iframe>
+<h4 class="alert alert-info" *ngIf="!isavailable"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-flat-button color="warn" mat-dialog-close class="close">Close</button>
+</mat-dialog-actions>
+
+
+

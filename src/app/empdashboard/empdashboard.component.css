@@ -3,7 +3,6 @@
   background-size: 100% ;  
   background-size:cover;
   color: white;
-  height: 100%;
 }
 
 .sidenav {
@@ -48,4 +47,5 @@
   background-image:url("E:\kaar internship\portals\customer portal\angular\portal\src\assets\images\industry3.jpg");
   background-size: 100% ;  
   background-size:cover;
+  height: 100%;
 }

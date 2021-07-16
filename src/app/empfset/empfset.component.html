@@ -150,7 +150,9 @@
 </mat-tab-group>
 
 </div>
-<h4 class="alert alert-info" *ngIf="!isavailable1"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
+
 <mat-spinner class="spin2" color="warn" diameter="70" *ngIf="isprogress1"></mat-spinner>
 </div>
+<br><br>
+<h4 class="alert alert-info" *ngIf="!isavailable1 && !isprogress1"><p class="align" style="margin-left:45%; font-weight:bold">No details found</p></h4>
 

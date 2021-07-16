@@ -68,6 +68,7 @@ import { NotifypoComponent } from './notifypo/notifypo.component';
 import { EmpfsetComponent } from './empfset/empfset.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { DialogemppayComponent } from './dialogemppay/dialogemppay.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -109,7 +110,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     EmplreqComponent,
     EmppayComponent,
     NotifypoComponent,
-    EmpfsetComponent
+    EmpfsetComponent,
+    DialogemppayComponent
   ],
   entryComponents:[LogoutdialogComponent,DialogsaleorderComponent],
   imports: [

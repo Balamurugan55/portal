@@ -6,6 +6,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex-direction: column;
     justify-content: center;
   }
+.iframe{
+  margin-left:10px;
+    margin-right: 10px;
+    overflow: auto;
+    height: 100%;
+}
   
   .mat-cell {
     text-align: center;
@@ -21,7 +27,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .anime {
   height: 100%;
-  background: radial-gradient(ellipse at bottom, #1fc1d6 0%, #0b1f83 100%);
+  background: radial-gradient(ellipse at bottom, #d46a6a 0%, #9C0405 100%);
   overflow: hidden;
 }
 
